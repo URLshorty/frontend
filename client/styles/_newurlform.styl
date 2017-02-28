@@ -1,0 +1,40 @@
+
+@import '_colors.styl'
+
+borderStyle = 1px solid gray
+
+#new-url-form
+  > input
+    display block
+    margin .5rem auto
+
+#new-urls-list-table
+  display block
+  max-height 8rem
+  width 80%
+  overflow-y auto
+  margin 0 auto
+  border: borderStyle
+  overflow-wrap break-word
+  vertical-align top
+  > tbody
+    width 100%
+    display inline-block
+    > tr
+      width 100%
+      display: inline-block
+      color navBarNavy
+      > .header-cell
+        border-top none
+      > td
+        display: inline-block
+        height 100%
+        width 50%
+        border-top: borderStyle
+    > tr:nth-child(even)    
+      background-color logoLightBlue
+      color white
+      font-weight 300
+
+
+
