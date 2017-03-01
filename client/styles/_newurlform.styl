@@ -14,7 +14,7 @@ borderStyle = 1px solid gray
   width 80%
   overflow-y auto
   margin 0 auto
-  border: borderStyle
+  border borderStyle
   overflow-wrap break-word
   vertical-align top
   > tbody
@@ -22,15 +22,16 @@ borderStyle = 1px solid gray
     display inline-block
     > tr
       width 100%
-      display: inline-block
+      display inline-block
       color navBarNavy
       > .header-cell
         border-top none
       > td
-        display: inline-block
+        display inline-block
+        float left
         height 100%
         width 50%
-        border-top: borderStyle
+        border-top borderStyle
     > tr:nth-child(even)    
       background-color logoLightBlue
       color white
