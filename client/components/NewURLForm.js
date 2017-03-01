@@ -12,10 +12,9 @@ export default class NewForm extends React.Component {
     const inputURL = this.refs.inputURL.value;
     if ( inputURL.length > 0 ) {
       this.refs.inputURL.value = "";
+      this.props.enableSubmitNewURL(false);
       this.props.inputURL(inputURL);
-    } else {
-      alert("Please enter url to shorten."); // hopefully to be replaced by button dynamic disable working
-    }
+    } 
   }
 
   checkSubmitEnabled() {
@@ -32,9 +31,9 @@ export default class NewForm extends React.Component {
             placeholder="http://example.com" 
             onChange={this.checkSubmitEnabled.bind(this)}
           />
-          {/* why won't the below work? */}
-          {/*<input type="submit" value="Shorten" disabled={!this.submitEnabled} />*/}
-          <input type="submit" value="Shorten" />
+          
+          <input type="submit" value="Shorten" disabled={!this.props.activateNewURLButton} />
+
         </form>
 
         <NewURLsList {...this.props} />
