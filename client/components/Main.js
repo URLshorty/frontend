@@ -9,7 +9,7 @@ export default class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="main">
         <div id="nav-bar">
           <NavLink to="/#" className="nav-link" activeClassName="active">navlink</NavLink>
           <NavLink to="/#" className="nav-link" activeClassName="active">navlink</NavLink>
@@ -21,6 +21,8 @@ export default class Main extends React.Component {
 
         {/* because just this.props.childen doesn't get you access to the children's props  */}
         {React.cloneElement(this.props.children, this.props)}
+
+        <div id="footer"></div>
       </div>
     );
   }
