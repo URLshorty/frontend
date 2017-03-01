@@ -7,17 +7,9 @@ import Main from './components/Main';
 // MAKE THIS STATE MATCH STORE STATE FOR THE WIN
 function mapStateToProps(state) {
   return {
-    inputURLs: state.inputURLs.urls,
-    activateNewURLButton: state.inputURLs.submitNewEnabled,
+    inputURLs: state.inputURLs // has bool in it (KEEP IT FLAT FOR THE WIN)
   }
 }
-
-// HOW COME THE BELOW WOULD NOT WORK??
-// function mapStateToProps(state) {
-//   return {
-//     inputURLs: state.inputURLs
-//   }
-// }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);

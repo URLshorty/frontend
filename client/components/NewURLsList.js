@@ -18,7 +18,7 @@ export default class NewURL extends React.Component {
   render() {
     return (
       <div>
-        { this.props.inputURLs.length > 0 &&
+        { this.props.inputURLs.urls.length > 0 &&
           <table id="new-urls-list-table">
             <tbody id="new-urls-list-body">
               <tr className="input-url-table-header">
@@ -26,7 +26,7 @@ export default class NewURL extends React.Component {
                 <td className="header-cell">Destination</td>
               </tr>
 
-                {this.props.inputURLs.map(this.renderInputURLs.bind(this))}
+                {this.props.inputURLs.urls.map(this.renderInputURLs.bind(this))}
 
             </tbody>
           </table>

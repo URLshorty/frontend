@@ -32,7 +32,7 @@ export default class NewForm extends React.Component {
             onChange={this.checkSubmitEnabled.bind(this)}
           />
           
-          <input type="submit" value="Shorten" disabled={!this.props.activateNewURLButton} />
+          <input type="submit" value="Shorten" disabled={!this.props.inputURLs.submitNewEnabled} />
 
         </form>
 
