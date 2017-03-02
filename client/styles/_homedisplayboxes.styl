@@ -2,26 +2,53 @@
 
 #home-display-boxes
   // flexbox tut: https://www.youtube.com/watch?v=G7EIAgfkhmg
-  display flex // !! need to autoprefix this for compatibility
+  display flex
   flex-wrap wrap
   max-width 64rem
   justify-content center
   margin 2rem auto
-  background-color red
   > div
+    border 1px solid navBarNavy
     margin 0 .5rem 1rem
-    display inline-block
     width 20rem
     height 15rem
+    text-align center
     @media (max-width: 40rem)
       width 25rem
       margin .5rem auto
     @media (max-width: 20rem)
       width 100%
+      min-width 16rem 
       margin .5rem 0
-  > .most-visited-list
-    background-color blue
-  > .most-shortened-list
-    background-color orange  
+    > table
+      display inline-block
+      width 100%
+      height 12.35rem
+      overflow-y scroll
+      font-family arial
+      font-size 1rem
+      color blue
+      background-color lightRed 
+      border-top 1px solid navBarNavy
+      > tbody
+        display inline-block
+        width 100%
+        >tr
+          border-bottom 1px solid navBarNavy
+          display inline-block
+          width 100%
+          > td  
+            display inline-block
+            overflow-wrap break-word
+            float left
+          > .trending-url-cell
+            background-color logoLightBlue
+            width 80%   
+          > .trending-url-count-cell
+            min-width 20%
+    > h1
+      color navBarNavy
+      font-family lobster
+      margin 0 1rem
   > .chat-box
-    background-color purple
+    background-color lightPurple
