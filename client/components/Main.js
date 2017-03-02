@@ -23,8 +23,20 @@ export default class Main extends React.Component {
         {React.cloneElement(this.props.children, this.props)}
 
         <div id="home-display-boxes">
-          <URLsListBox {...this.props} className="most-visited-list" />
-          <URLsListBox {...this.props} className="most-shortened-list" />
+          <URLsListBox 
+            className="most-visited-list" 
+            title="Most Visited Links"
+            urls={this.props.topTrendingURLs}
+            updateTopTrendingURLs={this.props.updateTopTrendingURLs}
+          />
+
+          <URLsListBox 
+            className="most-shortened-list" 
+            title="Most Shortened"
+            urls={this.props.topRequestedURLs}
+            updateTopRequestedURLs={this.props.updateTopRequestedURLs}
+          />
+
           <ChatBox {...this.props} />
         </div>
 
