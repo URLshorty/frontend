@@ -7,7 +7,9 @@ import Main from './components/Main';
 // MAKE THIS STATE MATCH STORE STATE FOR THE WIN
 function mapStateToProps(state) {
   return {
-    inputURLs: state.inputURLs // has bool in it (KEEP IT FLAT FOR THE WIN)
+    inputURLs: state.inputURLs, // has bool in it (KEEP IT FLAT FOR THE WIN)
+    topTrendingURLs: state.topTrendingURLs,
+    topRequestedURLs: state.topRequestedURLs, 
   }
 }
 

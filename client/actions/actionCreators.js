@@ -15,3 +15,15 @@ export function enableSubmitNewURL(bool) {
     allowed: bool
   }
 }
+
+export function updateTopRequestedURLs() {
+  return {
+    type: 'x'
+  }
+}
+
+export function updateTopTrendingURLs() {
+  return {
+    type: 'x'
+  }
+}
