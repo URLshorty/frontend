@@ -1,20 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
 import NavLink from './NavLink';
-import MostVisitedList from './MostVisitedList';
-import MostShortenedList from './MostShortenedList';
+import URLsListBox from './URLsListBox';
 import ChatBox from './ChatBox';
 
 export default class Main extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // ES2015 provides a default class constructor if one is not specified.
 
   render() {
     return (
       <div id="main">
         <div id="nav-bar">
-          {/*<Link to="/" className="logo"><span>URL</span>.shorty</Link>*/}
+          {/* <Link to="/" className="logo"><span>URL</span>.shorty</Link> */}
           <NavLink to="/#" className="nav-link" activeClassName="active">Login</NavLink>
         </div>
 
@@ -26,8 +23,8 @@ export default class Main extends React.Component {
         {React.cloneElement(this.props.children, this.props)}
 
         <div id="home-display-boxes">
-          <MostVisitedList {...this.props} />
-          <MostShortenedList {...this.props} />
+          <URLsListBox {...this.props} className="most-visited-list" />
+          <URLsListBox {...this.props} className="most-shortened-list" />
           <ChatBox {...this.props} />
         </div>
 
@@ -36,3 +33,7 @@ export default class Main extends React.Component {
     );
   }
 }
+
+Main.propTypes = {
+  children: React.PropTypes.object.isRequired,
+};

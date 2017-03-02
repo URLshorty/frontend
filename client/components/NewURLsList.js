@@ -2,9 +2,6 @@ import React from 'react'
 import { Link } from 'react-router'
 
 export default class NewURLsList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   renderInputURLs(inputURL, index) {
     return (
