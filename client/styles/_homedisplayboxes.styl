@@ -16,10 +16,7 @@
     @media (max-width: 40rem)
       width 25rem
       margin .5rem auto
-    @media (max-width: 20rem)
-      width 100%
-      min-width 15rem 
-      margin .5rem 0
+      min-width 16rem 
     > table
       display inline-block
       width 100%
@@ -50,5 +47,22 @@
       color navBarNavy
       font-family lobster
       margin 0 1rem
-  > .chat-box
-    background-color lightPurple
+  > #chat-box
+    background-color lightGrey
+    border 1px solid mediumGrey
+    padding .4rem
+    > div, input
+      border 1px solid mediumGrey
+      padding 0 .5rem
+    > #chat-window
+      text-align left
+      height 12.5rem
+      background-color white
+      margin-bottom .2rem
+      overflow-y auto
+      overflow-wrap break-word
+    // > #chat-window::-webkit-scrollbar 
+    //   display none
+    > #message-form
+      > input
+        width 100%
