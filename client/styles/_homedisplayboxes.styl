@@ -1,0 +1,27 @@
+@import '_colorsfontsstyles.styl'
+
+#home-display-boxes
+  // flexbox tut: https://www.youtube.com/watch?v=G7EIAgfkhmg
+  display flex // !! need to autoprefix this for compatibility
+  flex-wrap wrap
+  max-width 64rem
+  justify-content center
+  margin 2rem auto
+  background-color red
+  > div
+    margin 0 .5rem 1rem
+    display inline-block
+    width 20rem
+    height 15rem
+    @media (max-width: 40rem)
+      width 25rem
+      margin .5rem auto
+    @media (max-width: 20rem)
+      width 100%
+      margin .5rem 0
+  > .most-visited-list
+    background-color blue
+  > .most-shortened-list
+    background-color orange  
+  > .chat-box
+    background-color purple

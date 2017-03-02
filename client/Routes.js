@@ -10,7 +10,6 @@ import store, { history } from './store';
 // Import Components
 import ReduxConnection from './ReduxConnection';
 import NewURLForm from './components/NewURLForm';
-// import SomeComponentEtc from './components/SomeComponentEtc';
 
 export default class Routes extends React.Component {
   constructor(props) {
