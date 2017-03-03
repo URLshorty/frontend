@@ -16,7 +16,7 @@ import user from './data/sampleUser'
 const defaultState = {
   inputURLs: {
     urls: [],
-    submitNewEnabled: false,
+    submitNewEnabled: false, // use React state for ephemeral stuff like this
   },
   topTrendingURLs: trendingURLs,
   topRequestedURLs: requestedURLs,

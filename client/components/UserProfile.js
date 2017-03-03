@@ -2,9 +2,29 @@ import React from 'react'
 
 export default class UserProfile extends React.Component {
 
-  newUserSubmit(e) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      usernameUpdateField: false,
+      emailUpdateField: false,
+    }
+  }
+
+
+  newValueSubmit(e) {
     e.preventDefault()
     console.log("user submit")
+  }
+
+  enableInputFields(field) {
+    this.setState({
+      ...this.state,
+      [field]: !this.state[field],
+    })
+    if (this.state[field]) {
+      document.getElementById(field).focus(); // why doesn' this do anything, here or in the devtools console?
+      document.getElementById(field).select();
+    }
   }
 
   render() {
@@ -13,27 +33,72 @@ export default class UserProfile extends React.Component {
         <img id="user-pic"></img>
         <div id="user-data">
           
-          <div id="username">
-            <span>Username</span><br />
-            <span>{this.props.userData.username}</span>
-          </div>
-          <button>EDIT</button>
+          {/* the two editable fields may by refactored for DRY */}
+          { !this.state.usernameUpdateField ? (
+            
+            <div>
+              <div id="username">
+                <span>Username</span><br />
+                <span>{this.props.userData.username}</span>
+              </div>
 
-{/*          <form id="new-url-form" onSubmit={this.newUserSubmit.bind(this)}>
-            <input 
-              type="text" 
-              ref="username" 
-              placeholder={this.props.userData.username}
-              disabled 
-            />
-            <input type="submit" hidden />
-          </form>*/}
+              <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>EDIT</button>
+            </div>
 
-          <div id="user-email">
-            <span>Email</span><br />
-            <span>{this.props.userData.email}</span>
-          </div>
-          <button>EDIT</button>
+          ) : (
+
+            <div>
+
+              <form id="update-username-form" onSubmit={this.newValueSubmit.bind(this)}>
+                <input 
+                  id="usernameUpdateField"
+                  type="text" 
+                  ref="username" 
+                  placeholder={this.props.userData.username}
+                />
+                <input type="submit" hidden />
+
+
+              </form>
+
+              <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>Cancel</button>
+
+            </div>
+
+          )}
+
+          { !this.state.emailUpdateField ? (
+            
+            <div>
+              <div id="user-email">
+                <span>Email</span><br />
+                <span>{this.props.userData.email}</span>
+              </div>
+
+              <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>EDIT</button>
+            </div>
+
+          ) : (
+
+            <div>
+
+              <form id="update-email-form" onSubmit={this.newValueSubmit.bind(this)}>
+                <input 
+                  id="emailUpdateField"
+                  type="text" 
+                  ref="email" 
+                  placeholder={this.props.userData.email}
+                />
+                <input type="submit" hidden />
+
+
+              </form>
+
+              <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>Cancel</button>
+
+            </div>
+
+          )}
 
           <div id="user-created-date">
             <span>User Since</span><br />
