@@ -1,20 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router';
 
-import URLsListBox from './URLsListBox';
-import ChatBox from './ChatBox';
+import NewURLForm from './NewURLForm'
+import URLsListBox from './URLsListBox'
+import ChatBox from './ChatBox'
 
 export default class Home extends React.Component {
 
   render() {
     return (
       <div id="home">
-        
-        <h1 className="logo">
-          <Link to="/"><span>URL</span>.shorty</Link>
-        </h1>
+
+        <NewURLForm 
+          inputURL={this.props.inputURL} 
+          inputURLs={this.props.inputURLs} 
+          enableSubmitNewURL={this.props.enableSubmitNewURL}
+        />
 
         <div id="home-display-boxes">
+
           <URLsListBox 
             className="most-visited-list" 
             title="Most Visited Links"
@@ -29,7 +32,8 @@ export default class Home extends React.Component {
             updateTopRequestedURLs={this.props.updateTopRequestedURLs}
           />
 
-          <ChatBox {...this.props} />
+        <ChatBox {...this.props} />
+
         </div>
 
       </div>

@@ -10,6 +10,7 @@ import store, { history } from './store';
 // Import Components
 import ReduxConnection from './ReduxConnection';
 import Home from './components/Home';
+import UserProfile from './components/UserProfile';UserProfile
 
 export default class Routes extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class Routes extends React.Component {
         <Router history={history}>
           <Route path="/" component={ReduxConnection}>
             <IndexRoute component={Home}></IndexRoute>
-            <Route path="/users/:username" component={Home}></Route>
+            <Route path="/users/:username" component={UserProfile}></Route>
           </Route>
         </Router>
       </Provider>

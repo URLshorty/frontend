@@ -13,7 +13,7 @@ export default class Main extends React.Component {
         <Header />
 
         {/* because just this.props.childen doesn't get you access to the children's props  */}
-        {React.cloneElement(this.props.children, this.props)}
+        {React.cloneElement(this.props.children, this.props)} {/* study what's going on here more */}
 
         <div id="footer"><div>Thanks for visiting!</div></div>
 
