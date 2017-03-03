@@ -1,5 +1,23 @@
 @import '_colorsfontsstyles.styl'
 
+#user-profile
+  text-align center
+  button
+    background-color white
+    border 1px solid logoLightBlue
+    color logoLightBlue
+    padding 0 1rem
+    margin .2rem 0 1rem
+    font-family arial
+    font-size .8rem
+  button:hover
+    background-color logoLightBlue
+    color white
+    transition-delay 0s
+    transition-duration 0.3s
+    transition-property all
+    transition-timing-function ease
+
 #user-pic
   display block
   margin 0 auto
@@ -13,44 +31,29 @@
   
 #user-data
   margin-top .5rem
-  text-align center
   #username
   #user-email
   #user-created-date
     :first-child
       font-family lobster
-      font-size 1.3rem
-      color navBarNavy
+      font-size 1.5rem
+      color logoLightBlue
     :last-child
       font-family blocky
       font-size 2rem
-      color logoLightBlue
+      color navBarNavy
   form
     input
       font-family blocky
       font-size 2rem
       color logoLightBlue
       margin-top 1.3rem
-  button
-    background-color white
-    border 2px solid navBarNavy
-    padding 0 1rem
-    margin .2rem 0 1rem
-    font-family arial
-    font-size .8rem
-  button:hover
-    background-color navBarNavy
-    color white
-    transition-delay 0s
-    transition-duration 0.3s
-    transition-property all
-    transition-timing-function ease
   #most-popular-link
     margin-top 1.5rem
     font-family arial
     font-size 1.3rem
-    color logoLightBlue
+    color navBarNavy
     :first-child
       font-family blocky
-      color navBarNavy
+      color logoLightBlue
       
