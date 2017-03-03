@@ -2,9 +2,6 @@ import React from 'react';
 import NewURLsList from './NewURLsList';
 
 export default class NewForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleSubmit(e) {
     console.log("handleSubmit() called");

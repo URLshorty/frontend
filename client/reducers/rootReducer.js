@@ -6,12 +6,14 @@ import inputURLs from './inputURLs';
 import topTrendingURLs from './topTrendingURLs';
 import topRequestedURLs from './topRequestedURLs';
 import chatMessages from './chatMessages';
+import userData from './userData';
 
 const rootReducer = combineReducers({
   inputURLs, 
   topTrendingURLs, 
   topRequestedURLs, 
   chatMessages,
+  userData,
   routing: routerReducer 
 });
 

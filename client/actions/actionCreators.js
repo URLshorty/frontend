@@ -12,18 +12,13 @@ export function enableSubmitNewURL(bool) {
   console.log("actionCreator enableSubmitNewURL called")
   return {
     type: 'ENABLE_SUBMIT_NEW_URL', 
-    allowed: bool
+    allowed: bool,
   }
 }
 
-export function updateTopRequestedURLs() {
+export function updateUserData(updateObj) {
   return {
-    type: 'x'
-  }
-}
-
-export function updateTopTrendingURLs() {
-  return {
-    type: 'x'
+    type: 'UPDATE_USER_DATA',
+    updateObj,
   }
 }

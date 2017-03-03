@@ -14,7 +14,7 @@
     "url": "https://github.com/URLshorty/frontend.git"
   },
   "author": "",
-  "license": "",
+  "license": "MIT",
   "homepage": "",
   "dependencies": {
     "babel-core": "^6.7.7",
@@ -34,6 +34,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
     "express": "^4.13.4",
+    "file-loader": "^0.10.1",
     "raven-js": "^2.3.0",
     "react": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
