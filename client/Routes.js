@@ -9,7 +9,7 @@ import store, { history } from './store';
 
 // Import Components
 import ReduxConnection from './ReduxConnection';
-import NewURLForm from './components/NewURLForm';
+import Home from './components/Home';
 
 export default class Routes extends React.Component {
   constructor(props) {
@@ -21,11 +21,11 @@ export default class Routes extends React.Component {
       <Provider store={store}>
         <Router history={history}>
           <Route path="/" component={ReduxConnection}>
-            <IndexRoute component={NewURLForm}></IndexRoute>
+            <IndexRoute component={Home}></IndexRoute>
+            <Route path="/users/:username" component={Home}></Route>
           </Route>
         </Router>
       </Provider>
     )
   }
 }
-            // <Route path="/some-other-component" component={SomeComponentEtc}></Route>
