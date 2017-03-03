@@ -11,6 +11,7 @@ function mapStateToProps(state) {
     topTrendingURLs: state.topTrendingURLs,
     topRequestedURLs: state.topRequestedURLs, 
     chatMessages: state.chatMessages,
+    userData: state.userData, 
   }
 }
 
