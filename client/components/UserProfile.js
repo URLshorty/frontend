@@ -10,10 +10,26 @@ export default class UserProfile extends React.Component {
     }
   }
 
+  newUsernameSubmit(e) { // look at DRY here
+    e.preventDefault(e)
+    this.props.updateUserData({
+      newUsername: this.refs.username.value
+    })
+    this.setState({
+      ...this.state,
+      usernameUpdateField: false,
+    })
+  }
 
-  newValueSubmit(e) {
-    e.preventDefault()
-    console.log("user submit")
+  newEmailSubmit(e) {
+    e.preventDefault(e)
+    this.props.updateUserData({
+      newEmail: this.refs.email.value
+    })
+    this.setState({
+      ...this.state,
+      emailUpdateField: false,
+    })
   }
 
   enableInputFields(field) {
@@ -49,7 +65,7 @@ export default class UserProfile extends React.Component {
 
             <div>
 
-              <form id="update-username-form" onSubmit={this.newValueSubmit.bind(this)}>
+              <form id="update-username-form" onSubmit={this.newUsernameSubmit.bind(this)}>
                 <input 
                   id="usernameUpdateField"
                   type="text" 
@@ -82,7 +98,7 @@ export default class UserProfile extends React.Component {
 
             <div>
 
-              <form id="update-email-form" onSubmit={this.newValueSubmit.bind(this)}>
+              <form id="update-email-form" onSubmit={this.newEmailSubmit.bind(this)}>
                 <input 
                   id="emailUpdateField"
                   type="text" 
