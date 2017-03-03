@@ -5,11 +5,13 @@ import { routerReducer } from 'react-router-redux';
 import inputURLs from './inputURLs';
 import topTrendingURLs from './topTrendingURLs';
 import topRequestedURLs from './topRequestedURLs';
+import chatMessages from './chatMessages';
 
 const rootReducer = combineReducers({
   inputURLs, 
   topTrendingURLs, 
   topRequestedURLs, 
+  chatMessages,
   routing: routerReducer 
 });
 

@@ -9,13 +9,17 @@ import rootReducer from './reducers/rootReducer';
 // this is where data is imported for initial state
 import trendingURLs from './data/trendingURLs'
 import requestedURLs from './data/requestedURLs'
+import chatMessages from './data/sampleChat'
+
+// any changes here need to be added in ./ReduxConnection.js too
 const defaultState = {
   inputURLs: {
     urls: [],
     submitNewEnabled: false,
   },
   topTrendingURLs: trendingURLs,
-  topRequestedURLs: requestedURLs, 
+  topRequestedURLs: requestedURLs,
+  chatMessages: chatMessages, 
 }
 
 // last arg enables Redux Devtools Chrome extension store enhancement (lots of enhancements available) - linter has to be ok with those trailing underscores

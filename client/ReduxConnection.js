@@ -10,6 +10,7 @@ function mapStateToProps(state) {
     inputURLs: state.inputURLs, // has bool in it (KEEP IT FLAT FOR THE WIN)
     topTrendingURLs: state.topTrendingURLs,
     topRequestedURLs: state.topRequestedURLs, 
+    chatMessages: state.chatMessages,
   }
 }
 
