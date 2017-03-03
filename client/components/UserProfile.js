@@ -47,7 +47,7 @@ export default class UserProfile extends React.Component {
     return (
       <div id="user-profile">
         <img id="user-pic"></img>
-        <button>UPLOAD</button>
+        <button onClick={()=>alert("coming soon")}>UPLOAD</button>
         <div id="user-data">
           
           {/* the two editable fields may by refactored for DRY */}

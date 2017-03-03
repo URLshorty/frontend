@@ -22,3 +22,10 @@ export function updateUserData(updateObj) {
     updateObj,
   }
 }
+
+export function setCurrentModal(modal) {
+  return {
+    type: 'SET_MODAL',
+    modal,
+  }
+}

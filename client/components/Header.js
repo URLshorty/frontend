@@ -5,12 +5,17 @@ import NavLink from './NavLink'
 
 export default class Header extends React.Component {
 
+  loginModal() {
+    this.props.setCurrentModal("login")
+  }
+
   render() {
     return (
       <div id="header">
         
         <div id="nav-bar">
-          <NavLink to="/#" className="nav-link" activeClassName="active">Login</NavLink>
+          {/* fix activeClass not working */}
+          <NavLink onClick={this.loginModal.bind(this)} className="nav-link" activeClassName="active">Login</NavLink>
           <NavLink to="/users/random-username" className="nav-link" activeClassName="active">Random User Profile</NavLink>
         </div>
 

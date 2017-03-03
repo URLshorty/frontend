@@ -28,6 +28,7 @@ const defaultState = {
     is_admin: user.is_admin,
     created_at: user.created_at,
   }, 
+  currentModal: null,
 }
 
 // last arg enables Redux Devtools Chrome extension store enhancement (lots of enhancements available) - linter has to be ok with those trailing underscores
