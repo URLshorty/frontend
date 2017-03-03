@@ -7,6 +7,7 @@ import topTrendingURLs from './topTrendingURLs';
 import topRequestedURLs from './topRequestedURLs';
 import chatMessages from './chatMessages';
 import userData from './userData';
+import currentModal from './currentModal';
 
 const rootReducer = combineReducers({
   inputURLs, 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   topRequestedURLs, 
   chatMessages,
   userData,
+  currentModal,
   routing: routerReducer 
 });
 
