@@ -4,7 +4,7 @@ export default class TestModal extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="modal">
         im a test modal
       </div>
     );
