@@ -5,6 +5,9 @@
   > input
     display block
     margin .5rem auto
+    font-family slimBlocky
+  > input:enabled
+    color logoLightBlue
 
 #new-urls-list-table
   display block
@@ -13,9 +16,11 @@
   width 80%
   overflow-y auto
   margin 1.5rem auto
-  border greyBorder
+  border-top 1px solid lightGrey
+  border-left 1px solid lightGrey
   overflow-wrap break-word
   vertical-align top
+  box-shadow lightGreyShadow
   @media (max-width: 40rem)
       width 25rem
       margin-left auto
@@ -25,6 +30,11 @@
   > tbody
     width 100%
     display inline-block
+    border-right lightGrey
+    >tr:first-child
+      background-color navBarNavy
+      border-color navBarNavy
+      color white
     > tr
       width 100%
       display inline-block
@@ -36,6 +46,8 @@
         float left
         height 100%
         width 50%
+        padding-left 1rem
+        font-family slimBlocky
         border-top greyBorder
     > tr:nth-child(even)    
       background-color logoLightBlue
