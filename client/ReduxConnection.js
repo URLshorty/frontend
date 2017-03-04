@@ -12,6 +12,7 @@ function mapStateToProps(state) {
     topRequestedURLs: state.topRequestedURLs, 
     chatMessages: state.chatMessages,
     userData: state.userData, 
+    currentModal: state.currentModal,
   }
 }
 

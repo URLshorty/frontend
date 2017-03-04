@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
+import ModalConductor from './ModalConductor';
 
 
 export default class Main extends React.Component {
@@ -10,12 +11,14 @@ export default class Main extends React.Component {
     return (
       <div id="main">
 
-        <Header />
+        <ModalConductor currentModal={this.props.currentModal} />
+
+        <Header setCurrentModal={this.props.setCurrentModal}/>
 
         {/* because just this.props.childen doesn't get you access to the children's props  */}
         {React.cloneElement(this.props.children, this.props)} {/* study what's going on here more */}
 
-        <div id="footer"><div>Thanks for visiting!</div></div>
+        <div id="footer">Thanks for visiting!</div>
 
       </div>
     );
