@@ -1,17 +1,16 @@
 import React from 'react'
 
-import TestModal from './TestModal.js'
+import LoginModal from './LoginModal.js'
 
 export default class ModalConductor extends React.Component {
 
   renderModal(modal) {
     switch (this.props.currentModal) {
       case 'login':
-        return <TestModal />
+        return <LoginModal />
 
       default:
-        // return null
-        <div>yds</div>
+        return null
     }
   }
 

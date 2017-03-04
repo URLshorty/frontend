@@ -1,7 +1,10 @@
 @import '_colorsfontsstyles.styl'
 
-.modal
+.modal-backdrop
   position fixed
+  display flex
+  justify-content center
+  align-items center
   z-index 1
   left 0
   top 0
@@ -9,7 +12,31 @@
   height 100%
   overflow auto
   background-color rgb(42, 79, 110)
-  background-color rgba(42, 79, 110,0.7)
-  //
-  color white
-  font-size 20rem
+  background-color rgba(42, 79, 110,0.5)
+
+.modal
+  background-color white    
+  display block
+  width 30rem
+  overflow-y auto
+  overflow-wrap break-word
+
+.modal-header
+  height 3rem
+.modal-footer
+  height 2rem
+.modal-header 
+.modal-footer
+  display flex
+  justify-content center
+  align-items center
+  width 100%
+  background-color navBarNavy
+  h1
+    font-family blocky
+    font-size 2.5rem
+    color white
+  
+.modal-content
+  margin 2rem
+  
