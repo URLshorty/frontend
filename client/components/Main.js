@@ -11,9 +11,12 @@ export default class Main extends React.Component {
     return (
       <div id="main">
 
-        <ModalConductor currentModal={this.props.currentModal} />
+        <ModalConductor 
+          currentModal={this.props.currentModal}
+          setCurrentModal={this.props.setCurrentModal} />
 
-        <Header setCurrentModal={this.props.setCurrentModal}/>
+        <Header 
+          setCurrentModal={this.props.setCurrentModal}/>
 
         {/* because just this.props.childen doesn't get you access to the children's props  */}
         {React.cloneElement(this.props.children, this.props)} {/* study what's going on here more */}
