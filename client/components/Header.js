@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, IndexLink } from 'react-router'
 
 import NavLink from './NavLink'
 
@@ -14,7 +14,7 @@ export default class Header extends React.Component {
       <div id="header">
         
         <div id="nav-bar">
-          {/* fix activeClass not working */}
+          <IndexLink to="/" className="nav-link" activeClassName="active">Home</IndexLink>
           <NavLink onClick={this.loginModal.bind(this)} className="nav-link" activeClassName="active">Login</NavLink>
           <NavLink to="/users/random-username" className="nav-link" activeClassName="active">Random User Profile</NavLink>
         </div>
