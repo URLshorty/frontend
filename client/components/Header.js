@@ -24,6 +24,10 @@ export default class Header extends React.Component {
           <NavLink to="/users/random-username" className="nav-link" activeClassName="active">Random User Profile</NavLink>
         </div>
 
+        <div id="mobile-menu-button">
+          &#9776;
+        </div>
+
       </div>
     )
   }

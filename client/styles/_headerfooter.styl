@@ -37,6 +37,27 @@
   > a:last-child
     margin-right 4rem
 
+#mobile-menu-button
+  @media (min-width: 42rem)
+    display none
+
+// mobile
+.logo
+  @media (max-width: 42rem)
+    padding .2rem 1.2rem
+#nav-bar
+  @media (max-width: 42rem)
+    background-color logoBeige
+    > a
+      display none
+#mobile-menu-button
+  color navBarNavy
+  padding .5rem 2rem 0 0
+  font-size 2rem
+#mobile-menu-button:hover
+  cursor pointer
+  color logoLightBlue  
+
 #footer::before
   background-color blue
 #footer
