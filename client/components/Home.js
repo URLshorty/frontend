@@ -32,7 +32,10 @@ export default class Home extends React.Component {
             updateTopRequestedURLs={this.props.updateTopRequestedURLs}
           />
 
-        <ChatBox {...this.props} />
+          <ChatBox 
+            chatMessages={this.props.chatMessages}
+            addMessageToChat={this.props.addMessageToChat}
+          />
 
         </div>
 

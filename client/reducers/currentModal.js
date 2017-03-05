@@ -7,8 +7,8 @@ function currentModal(state={}, action) {
     case 'SET_MODAL':
       return action.modal
     default:
-      return state;
+      return state
   }
 }
 
-export default currentModal;
+export default currentModal

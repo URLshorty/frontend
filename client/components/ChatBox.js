@@ -6,14 +6,17 @@ export default class ChatBox extends React.Component {
     this.scrollToBottom()
   }
 
+  componentDidUpdate() {
+    this.scrollToBottom()
+  }
+
   scrollToBottom() {
     document.getElementById("chat-window").scrollTop = document.getElementById("chat-window").scrollHeight
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    document.getElementById("chat-window").innerHTML += `<p>${this.refs.message.value}</p>`
-    this.scrollToBottom()
+    this.props.addMessageToChat(this.refs.message.value)
     this.refs.message.value = ""
   }
 
