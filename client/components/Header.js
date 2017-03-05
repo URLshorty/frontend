@@ -5,8 +5,8 @@ import NavLink from './NavLink'
 
 export default class Header extends React.Component {
 
-  loginModal() {
-    this.props.setCurrentModal("login")
+  showModal(modalName) {
+    this.props.setCurrentModal(modalName)
   }
 
   render() {
@@ -15,7 +15,8 @@ export default class Header extends React.Component {
         
         <div id="nav-bar">
           <IndexLink to="/" className="nav-link" activeClassName="active">Home</IndexLink>
-          <NavLink onClick={this.loginModal.bind(this)} className="nav-link" activeClassName="active">Login</NavLink>
+          <NavLink onClick={this.showModal.bind(this, "loginModal")} className="nav-link" activeClassName="active">Login</NavLink>
+          <NavLink onClick={this.showModal.bind(this, "signUpModal")} className="nav-link" activeClassName="active">Sign Up</NavLink>
           <NavLink to="/users/random-username" className="nav-link" activeClassName="active">Random User Profile</NavLink>
         </div>
 
