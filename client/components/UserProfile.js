@@ -43,11 +43,15 @@ export default class UserProfile extends React.Component {
     }
   }
 
+  uploadModal() {
+    this.props.setCurrentModal("pictureUploadModal")
+  }
+
   render() {
     return (
       <div id="user-profile">
         <img id="user-pic"></img>
-        <button onClick={()=>alert("coming soon")}>UPLOAD</button>
+        <button onClick={this.uploadModal.bind(this)}>UPLOAD</button>
         <div id="user-data">
           
           {/* the two editable fields may by refactored for DRY */}
