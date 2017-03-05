@@ -21,12 +21,12 @@ export default class Header extends React.Component {
           <IndexLink to="/" className="nav-link" activeClassName="active">Home</IndexLink>
           <NavLink onClick={this.showModal.bind(this, "loginModal")} className="nav-link" activeClassName="active">Login</NavLink>
           <NavLink onClick={this.showModal.bind(this, "signUpModal")} className="nav-link" activeClassName="active">Sign Up</NavLink>
-          <NavLink to="/users/random-username" className="nav-link" activeClassName="active">Random User Profile</NavLink>
+          <NavLink to="/users/random-username" className="nav-link" activeClassName="active">Random User</NavLink>
         </div>
 
-        <div id="mobile-menu-button">
+{/*        <div id="mobile-menu-button">
           &#9776;
-        </div>
+        </div>*/}
 
       </div>
     )

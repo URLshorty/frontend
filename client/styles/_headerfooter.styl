@@ -1,5 +1,9 @@
 @import '_colorsfontsstyles.styl'
 
+//
+// header
+//
+
 #header
   display flex
   background-color logoBeige
@@ -41,15 +45,21 @@
   @media (min-width: 42rem)
     display none
 
+//
 // mobile
+//
+#header
+  @media (max-width: 42rem)
+    flex-direction column
 .logo
   @media (max-width: 42rem)
     padding .2rem 1.2rem
 #nav-bar
   @media (max-width: 42rem)
-    background-color logoBeige
+    justify-content space-around
     > a
-      display none
+    > a:last-child
+      margin .5rem
 #mobile-menu-button
   color navBarNavy
   padding .5rem 2rem 0 0
@@ -57,6 +67,10 @@
 #mobile-menu-button:hover
   cursor pointer
   color logoLightBlue  
+
+//
+// footer
+//
 
 #footer::before
   background-color blue
