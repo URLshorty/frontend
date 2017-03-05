@@ -29,3 +29,10 @@ export function setCurrentModal(modal) {
     modal,
   }
 }
+
+export function addMessageToChat(message) {
+  return {
+    type: 'ADD_MESSAGE_TO_CHAT',
+    message,
+  }
+}

@@ -3,11 +3,12 @@
 #user-profile
   text-align center
   button
+    display block
     background-color white
     border 1px solid logoLightBlue
     color logoLightBlue
     padding 0 1rem
-    margin .2rem 0 1rem
+    margin .2rem auto 1rem
     font-family arial
     font-size .8rem
   button:hover
@@ -24,13 +25,16 @@
   width 12.25rem
   height 12.25rem
   border 1px solid navBarNavy
-  box-shadow: lightGreyShadow
   background-image url(../data/user-silhouette.png)
   background-repeat no-repeat
   border-radius 50%
   
 #user-data
+  display inline-block
   margin-top .5rem
+  background-color rgba(255,255,255,.8);
+  padding 2rem 5rem
+  box-shadow lightGreyShadow
   #username
   #user-email
   #user-created-date
@@ -48,6 +52,9 @@
       font-size 2rem
       color logoLightBlue
       margin-top 1.3rem
+  button
+    display inline-block
+    margin .5rem
   #most-popular-link
     margin-top 1.5rem
     font-family slimBlocky

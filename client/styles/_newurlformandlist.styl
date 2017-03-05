@@ -2,12 +2,32 @@
 @import '_colorsfontsstyles.styl'
 
 #new-url-form
+  margin 5rem 0 4rem
   > input
     display block
-    margin .5rem auto
+    margin 1rem auto
     font-family slimBlocky
-  > input:enabled
-    color logoLightBlue
+  > input:first-child
+      font-size 2.5rem
+      text-align center
+      width 41rem
+      border 1px solid white
+      box-shadow lightGreyShadow
+      color logoLightBlue
+      @media (max-width: 42rem)
+        width 97%
+        margin 0 auto
+  > input:last-child
+      width 10rem
+      border none
+      border 2px solid lightGrey
+  > input:last-child:disabled
+      background-color rgba(0,0,0,0)
+      opacity 0.5
+  > input:last-child:enabled
+      background-color logoBeige
+      color logoLightBlue
+      
 
 #new-urls-list-table
   display block
@@ -15,18 +35,16 @@
   max-width 64rem
   width 80%
   overflow-y auto
-  margin 1.5rem auto
-  border-top 1px solid lightGrey
-  border-left 1px solid lightGrey
+  margin 1.2rem auto 4rem
   overflow-wrap break-word
   vertical-align top
+  border 1px solid lightGrey
   box-shadow lightGreyShadow
-  @media (max-width: 40rem)
-      width 25rem
-      margin-left auto
-      margin-right auto
-  @media (max-width: 20rem)
-      width 100%
+  @media (min-width: 42rem)
+    min-width 41rem
+  @media (max-width: 42rem)
+    width 97%
+    margin 0 auto
   > tbody
     width 100%
     display inline-block
@@ -39,6 +57,7 @@
       width 100%
       display inline-block
       color navBarNavy
+      background-color white
       > .header-cell
         border-top none
       > td
@@ -49,7 +68,7 @@
         padding-left 1rem
         font-family slimBlocky
         border-top greyBorder
-    > tr:nth-child(even)    
+    > tr:nth-child(odd)    
       background-color logoLightBlue
       color white
       font-weight 300

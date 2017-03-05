@@ -39,7 +39,7 @@ export default class UserProfile extends React.Component {
     })
     if (this.state[field]) {
       document.getElementById(field).focus(); // why doesn' this do anything, here or in the devtools console?
-      document.getElementById(field).select();
+      document.getElementById(field).select(); // ""
     }
   }
 
@@ -54,7 +54,7 @@ export default class UserProfile extends React.Component {
         <button onClick={this.uploadModal.bind(this)}>UPLOAD</button>
         <div id="user-data">
           
-          {/* the two editable fields may by refactored for DRY */}
+          {/* possible refactor for DRY */}
           { !this.state.usernameUpdateField ? (
             
             <div>
@@ -77,12 +77,14 @@ export default class UserProfile extends React.Component {
                   ref="username" 
                   placeholder={this.props.userData.username}
                 />
-                <input type="submit" hidden />
-
+              <input type="submit" hidden />
 
               </form>
 
+    
               <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>Cancel</button>
+              <button onClick={this.newUsernameSubmit.bind(this)}>Update</button>             
+           
 
             </div>
 
@@ -115,7 +117,9 @@ export default class UserProfile extends React.Component {
 
               </form>
 
+
               <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>Cancel</button>
+              <button onClick={this.newEmailSubmit.bind(this)}>Update</button>
 
             </div>
 
