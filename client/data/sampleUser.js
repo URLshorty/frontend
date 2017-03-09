@@ -1,3 +1,5 @@
+// put up JSON server to mock this for AJAX functions build
+
 const sampleUser = {
   id: 14,
   username: "eric1080",

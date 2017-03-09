@@ -1,3 +1,5 @@
+// put up JSON server to mock this for AJAX functions build
+
 const requestedURLs = [{url: "google", visits: 29},
                 {url: "google", visits: 21},
                 {url: "yahoo", visits: 40},

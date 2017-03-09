@@ -1,3 +1,5 @@
+// put up JSON server to mock this for AJAX functions build
+
 const trendingURLs = [{url: "google", visits: 19},
                 {url: "google", visits: 11},
                 {url: "yahoo", visits: 10},

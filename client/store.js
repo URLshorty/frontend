@@ -33,6 +33,8 @@ const defaultState = {
 
 // last arg enables Redux Devtools Chrome extension store enhancement (lots of enhancements available) - linter has to be ok with those trailing underscores
 // CAUTION: right now actions in redux devtools queue may be replayed on hot reload
+
+// IMPORTANT! WHEN APP IS HOSTED DEVTOOL MUST NOT BE INCLUDED
 const store = createStore(rootReducer,  defaultState,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 
