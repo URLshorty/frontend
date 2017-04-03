@@ -16,7 +16,7 @@ import user from './data/sampleUser'
 const defaultState = {
   inputURLs: {
     urls: [],
-    submitNewEnabled: false, // use React state for ephemeral stuff like this
+    submitNewEnabled: false, // USE COMPONENT STATE FOR EPHEMERAL STUFF LIKE THIS
   },
   topTrendingURLs: trendingURLs,
   topRequestedURLs: requestedURLs,
@@ -27,7 +27,7 @@ const defaultState = {
     email: user.email,
     is_admin: user.is_admin,
     created_at: user.created_at,
-  }, 
+  },
   currentModal: null,
 }
 

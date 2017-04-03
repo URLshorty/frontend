@@ -20,7 +20,7 @@
     @media (max-width: 42rem)
       width 25rem
       margin .5rem auto
-      min-width 16rem 
+      min-width 16rem
     > table
       display inline-block
       width 100%
@@ -29,7 +29,7 @@
       font-family slimBlocky
       font-size 1rem
       color blue
-      background-color lightRed 
+      background-color lightRed
       border-top 1px solid navBarNavy
       > tbody
         display inline-block
@@ -38,34 +38,79 @@
           border-bottom 1px solid navBarNavy
           display inline-block
           width 100%
-          > td  
+          > td
             display inline-block
             line-height 1.7rem
             overflow-wrap break-word
             float left
           > .trending-url-cell
             background-color logoLightBlue
-            width 80%   
+            width 80%
           > .trending-url-count-cell
             min-width 20%
     > h1
       color navBarNavy
       font-family lobster
       margin 0 1rem
-  > #chat-box
+  > .chat-box
     background-color lightGrey
     border 1px solid mediumGrey
-    padding .4rem
-    > div, input
+    font-family slimBlocky
+    > div
+      margin .4rem
       border 1px solid mediumGrey
       padding 0 .5rem
     > #chat-window
       text-align left
-      height 12.5rem
+      height 12.1rem
       background-color white
       margin-bottom .2rem
       overflow-y auto
       overflow-wrap break-word
+      //dummy users
+      > p:nth-child(even)::before
+        content: "Joe1983: "
+        color blue
+        font-weight bold
+      > p:nth-child(odd)::before
+        content: "Kar48: "
+        color red
+        font-weight bold
     > #message-form
+        margin .2rem .4rem .5rem
       > input
-        width 100%
+        display inline-block
+        border 1px solid mediumGrey
+      > form input[type=text]
+        width 80%
+        padding 0 .5rem
+      > form input[type=submit]
+        width 20%
+    > #no-chat-mask
+      display none
+    > #chat-mask
+      position absolute
+      margin 0
+      width inherit
+      height inherit
+      border 1px solid rgba(0, 0, 0, .7)
+      background-color rgba(0, 0, 0, .7)
+      > #user-icon
+        border none
+        width 8rem
+        height 8rem
+        margin 2rem auto 0
+        background-image url(../data/user-silhouette.png)
+        background-size cover
+        background-position center
+        background-repeat no-repeat
+      > h4
+        color white
+        font-family slimBlocky
+        font-size 1.2rem
+        position: relative;
+        top: -6rem;
+  > .chat-mask
+      border 1px solid rgba(0, 0, 0, .7)
+
+

@@ -50,13 +50,13 @@ export default class UserProfile extends React.Component {
   render() {
     return (
       <div id="user-profile">
-        <img id="user-pic"></img>
+        <div id="user-pic"></div>
         <button onClick={this.uploadModal.bind(this)}>UPLOAD</button>
         <div id="user-data">
-          
+
           {/* possible refactor for DRY */}
           { !this.state.usernameUpdateField ? (
-            
+
             <div>
               <div id="username">
                 <span>Username</span><br />
@@ -71,27 +71,27 @@ export default class UserProfile extends React.Component {
             <div>
 
               <form id="update-username-form" onSubmit={this.newUsernameSubmit.bind(this)}>
-                <input 
+                <input
                   id="usernameUpdateField"
-                  type="text" 
-                  ref="username" 
+                  type="text"
+                  ref="username"
                   placeholder={this.props.userData.username}
                 />
               <input type="submit" hidden />
 
               </form>
 
-    
+
               <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>Cancel</button>
-              <button onClick={this.newUsernameSubmit.bind(this)}>Update</button>             
-           
+              <button onClick={this.newUsernameSubmit.bind(this)}>Update</button>
+
 
             </div>
 
           )}
 
           { !this.state.emailUpdateField ? (
-            
+
             <div>
               <div id="user-email">
                 <span>Email</span><br />
@@ -106,10 +106,10 @@ export default class UserProfile extends React.Component {
             <div>
 
               <form id="update-email-form" onSubmit={this.newEmailSubmit.bind(this)}>
-                <input 
+                <input
                   id="emailUpdateField"
-                  type="text" 
-                  ref="email" 
+                  type="text"
+                  ref="email"
                   placeholder={this.props.userData.email}
                 />
                 <input type="submit" hidden />
