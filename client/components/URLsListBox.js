@@ -2,6 +2,10 @@ import React from 'react'
 
 export default class URLsListBox extends React.Component {
 
+  getUrls(set) {
+
+  }
+
   renderRow(url, index) {
     return (
       <tr key={index}>
@@ -22,7 +26,7 @@ export default class URLsListBox extends React.Component {
           </tbody>
         </table>
       </div>
-      
-    );
+
+    )
   }
 }

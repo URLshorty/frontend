@@ -10,29 +10,29 @@ export default class Home extends React.Component {
     return (
       <div id="home">
 
-        <NewURLForm 
-          inputURL={this.props.inputURL} 
-          inputURLs={this.props.inputURLs} 
+        <NewURLForm
+          inputURL={this.props.inputURL}
+          inputURLs={this.props.inputURLs}
           enableSubmitNewURL={this.props.enableSubmitNewURL}
         />
 
         <div id="home-display-boxes">
 
-          <URLsListBox 
-            className="most-visited-list" 
+          <URLsListBox
+            className="most-visited-list"
             title="Most Visited Links"
             urls={this.props.topTrendingURLs}
             updateTopTrendingURLs={this.props.updateTopTrendingURLs}
           />
 
-          <URLsListBox 
-            className="most-shortened-list" 
+          <URLsListBox
+            className="most-shortened-list"
             title="Most Shortened"
             urls={this.props.topRequestedURLs}
             updateTopRequestedURLs={this.props.updateTopRequestedURLs}
           />
 
-          <ChatBox 
+          <ChatBox
             chatMessages={this.props.chatMessages}
             addMessageToChat={this.props.addMessageToChat}
           />
@@ -40,6 +40,6 @@ export default class Home extends React.Component {
         </div>
 
       </div>
-    );
+    )
   }
 }

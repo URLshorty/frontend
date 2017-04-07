@@ -3,7 +3,7 @@ import React from 'react'
 export default class ChatBox extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       chatEnabled: false,
     }
@@ -18,32 +18,31 @@ export default class ChatBox extends React.Component {
   }
 
   scrollToBottom() {
-    document.getElementById("chat-window").scrollTop = document.getElementById("chat-window").scrollHeight
+    document.getElementById('chat-window').scrollTop = document.getElementById('chat-window').scrollHeight
   }
 
   masking() {
     if (this.state.chatEnabled) {
-      return "no-chat-mask"
-    } else {
-      return "chat-mask"
+      return 'no-chat-mask'
     }
+    return 'chat-mask'
   }
 
   handleSubmit(e) {
     e.preventDefault()
     this.props.addMessageToChat(this.refs.message.value)
-    this.refs.message.value = ""
+    this.refs.message.value = ''
   }
 
   render() {
     return (
       <div className={`chat-box ${this.masking()}`}>
         <div id={this.masking()}>
-          <div id="user-icon"></div>
+          <div id="user-icon" />
           <h4>Please sign in to use chat.</h4>
         </div>
 
-        <div id="chat-window">{this.props.chatMessages.map((x,i)=> <p key={i} >{x}</p> )}</div>
+        <div id="chat-window">{this.props.chatMessages.map((x, i) => <p key={i} >{x}</p> )}</div>
         <form
           onSubmit={this.handleSubmit.bind(this)}
           id="message-form"
@@ -58,6 +57,6 @@ export default class ChatBox extends React.Component {
 
         </form>
       </div>
-    );
+    )
   }
 }

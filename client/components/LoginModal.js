@@ -20,17 +20,17 @@ export default class LoginModal extends React.Component {
 
             <form id="login-form" onSubmit={this.loginSubmit.bind(this)}>
 
-              <input 
+              <input
                 id="usernameField"
-                type="text" 
-                ref="username" 
+                type="text"
+                ref="username"
                 placeholder="username"
               />
 
-              <input 
+              <input
                 id="password"
-                type="password" 
-                ref="email" 
+                type="password"
+                ref="email"
                 placeholder="password"
               />
 
@@ -40,10 +40,10 @@ export default class LoginModal extends React.Component {
 
           </div>
 
-          <div className="modal-footer"></div>
+          <div className="modal-footer" />
 
         </div>
       </div>
-    );
+    )
   }
 }
