@@ -20,7 +20,6 @@ const defaultState = {
     submitNewEnabled: false, // USE COMPONENT STATE FOR EPHEMERAL STUFF LIKE THIS
   },
   topTrendingURLs: trendingURLs,
-  topRequestedURLs: requestedURLs,
   chatMessages,
   userData: {
     id: user.id,

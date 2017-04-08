@@ -1,5 +1,6 @@
 // does not hot reload
 
+// could trigger a recheck on most shortened urls
 export function inputURL(inputURL) {
   console.log('actionCreator inputURL called, dispatching URL_INPUT')
   return {
