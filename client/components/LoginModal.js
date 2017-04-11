@@ -2,6 +2,9 @@ import React from 'react'
 
 export default class LoginModal extends React.Component {
 
+  // add notification here to alert when this
+  // appears as a result of session expiration
+
   loginSubmit(e) {
     e.preventDefault()
     console.log(this.refs.username.value)

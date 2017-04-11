@@ -1,17 +1,30 @@
-import React from 'react';
-import NewURLsList from './NewURLsList';
+import React from 'react'
+import NewURLsList from './NewURLsList'
 
 export default class NewForm extends React.Component {
 
   handleSubmit(e) {
-    console.log("handleSubmit() called");
     e.preventDefault();
     const inputURL = this.refs.inputURL.value;
     if ( inputURL.length > 0 ) {
-      this.refs.inputURL.value = "";
-      this.props.enableSubmitNewURL(false);
-      this.props.inputURL(inputURL);
-    } 
+      this.refs.inputURL.value = ""
+      this.props.enableSubmitNewURL(false)
+
+      fetch(`${process.env.API_URL}/api/urls?address=${inputURL}`, {
+        method: 'POST',
+      })
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        this.props.inputURL({
+          address: inputURL,
+          shortened: json.newUserUrl.shortened,
+        })
+      })
+      .catch((er) => alert(er))
+
+    }
   }
 
   checkSubmitEnabled() {
@@ -22,13 +35,13 @@ export default class NewForm extends React.Component {
     return (
       <div>
         <form id="new-url-form" onSubmit={this.handleSubmit.bind(this)}>
-          <input 
-            type="text" 
-            ref="inputURL" 
-            placeholder="http://example.com" 
+          <input
+            type="text"
+            ref="inputURL"
+            placeholder="http://example.com"
             onChange={this.checkSubmitEnabled.bind(this)}
           />
-          
+
           <input type="submit" value="Shorten" disabled={!this.props.inputURLs.submitNewEnabled} />
 
         </form>
@@ -36,6 +49,6 @@ export default class NewForm extends React.Component {
         <NewURLsList {...this.props} />
 
       </div>
-    );
+    )
   }
 }

@@ -10,7 +10,6 @@ import userData from './userData'
 import currentModal from './currentModal'
 
 const rootReducer = combineReducers({
-  api: (state = {}) => state, // to be pure & http://stackoverflow.com/a/33678198
   inputURLs,
   topTrendingURLs,
   topRequestedURLs,

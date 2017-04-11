@@ -14,7 +14,6 @@ import user from './data/sampleUser'
 
 // any changes here need to be added in ./ReduxConnection.js too
 const defaultState = {
-  api: 'http://localhost:3000/',
   inputURLs: {
     urls: [],
     submitNewEnabled: false, // USE COMPONENT STATE FOR EPHEMERAL STUFF LIKE THIS

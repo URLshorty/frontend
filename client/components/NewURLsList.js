@@ -4,10 +4,12 @@ import { Link } from 'react-router'
 export default class NewURLsList extends React.Component {
 
   renderInputURLs(inputURL, index) {
+    let shortUrl = `${process.env.API_URL}/${inputURL.shortened}`
+
     return (
       <tr className="input-url-row" key={index}>
-        <td>TBD</td>
-        <td>{inputURL.url}</td> 
+        <td><a href={shortUrl} target="_blank">{shortUrl}</a></td>
+        <td>{inputURL.address}</td>
       </tr>
     )
   }
@@ -32,4 +34,4 @@ export default class NewURLsList extends React.Component {
     );
   }
 }
- 
+

@@ -6,9 +6,12 @@
 function inputURLs(state = {}, action) {
   switch (action.type) {
     case 'URL_INPUT':
-      console.log("reducer fired for URL_INPUT")
       return ({
-        urls: [{url: action.inputURL}, ...state.urls],
+        urls: [{
+            address: action.inputURL.address,
+            shortened: action.inputURL.shortened,
+          },
+          ...state.urls],
         submitNewEnabled: state.submitNewEnabled,
       })
     case 'ENABLE_SUBMIT_NEW_URL':

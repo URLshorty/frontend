@@ -18,19 +18,19 @@ export default class Home extends React.Component {
 
         <div id="home-display-boxes">
 
-          {/* <URLsListBox
+          <URLsListBox
             className="most-visited-list"
             title="Most Visited Links"
+            setAddress="topVisitedUrls"
             api={this.props.api}
-            set="topTrendingUrls"
             updateTopTrendingURLs={this.props.updateTopTrendingURLs}
-          /> */}
+          />
 
           <URLsListBox
             className="most-shortened-list"
             title="Most Shortened"
+            setAddress="topRequestedUrls"
             api={this.props.api}
-            set="topRequestedUrls"
             updateTopRequestedURLs={this.props.updateTopRequestedURLs}
           />
 

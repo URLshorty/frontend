@@ -5,26 +5,17 @@ export default class URLsListBox extends React.Component {
   constructor(props) {
     super(props)
     this.state = {urls: []}
-    this.addUrlsToState(this.props.set)
+    this.addUrlsToState(this.props.setAddress)
   }
 
-  addUrlsToState(set) {
-    const context = this
-    if (set === 'topTrendingUrls') {
-
-    }
-    else if (set === 'topRequestedUrls') {
-      const doRender = this.renderRow
-      fetch(`${this.props.api}api/topRequestedUrls`, {
-        method: 'get',
-        credentials: 'include',
-      })
-      .then((response) => {
-        return response.json()
-      }).then((json) => {
-        this.setState({urls: json})
-      })
-    }
+  addUrlsToState(setAddress) {
+    fetch(`${process.env.API_URL}/api/${setAddress}`)
+    .then((response) => {
+      return response.json()
+    }).then((json) => { // arrow function takes enclosing this, so this works
+      this.setState({urls: json})
+    })
+    .catch((er) => console.log(er)) // start using this https://github.com/visionmedia/debug
   }
 
   renderRow(url, index) {
