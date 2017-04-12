@@ -6,6 +6,36 @@ import ChatBox from './ChatBox'
 
 export default class Home extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      mostShortened: [],
+      mostVisited: [],
+    }
+    this.fetchUrlsList('most-shortened')
+    this.fetchUrlsList('most-visited')
+  }
+
+  fetchUrlsList(setAddress) {
+    fetch(`${process.env.API_URL}/api/${setAddress}`)
+      .then((response) => {
+        return response.json()
+      }).then((json) => { // arrow function takes enclosing this, so this works
+        if (setAddress === "most-shortened") {
+          this.setState({
+            ...this.state,
+            mostShortened: json,
+          })
+        } else if (setAddress === "most-visited") {
+          this.setState({
+            ...this.state,
+            mostVisited: json,
+          })
+        }
+      })
+      .catch((er) => console.log(er)) // start using this https://github.com/visionmedia/debug
+  }
+
   render() {
     return (
       <div id="home">
@@ -21,16 +51,14 @@ export default class Home extends React.Component {
           <URLsListBox
             className="most-visited-list"
             title="Most Visited Links"
-            setAddress="topVisitedUrls"
-            api={this.props.api}
+            urlsList={this.state.mostVisited}
             updateTopTrendingURLs={this.props.updateTopTrendingURLs}
           />
 
           <URLsListBox
             className="most-shortened-list"
             title="Most Shortened"
-            setAddress="topRequestedUrls"
-            api={this.props.api}
+            urlsList={this.state.mostShortened}
             updateTopRequestedURLs={this.props.updateTopRequestedURLs}
           />
 
