@@ -20,8 +20,9 @@ export default class Home extends React.Component {
     fetch(`${process.env.API_URL}/api/${setAddress}`)
       .then((response) => {
         return response.json()
-      }).then((json) => { // arrow function takes enclosing this, so this works
+      }).then((json) => {
         if (setAddress === "most-shortened") {
+          console.log(this)
           this.setState({
             ...this.state,
             mostShortened: json,
@@ -44,7 +45,27 @@ export default class Home extends React.Component {
           inputURL={this.props.inputURL}
           inputURLs={this.props.inputURLs}
           enableSubmitNewURL={this.props.enableSubmitNewURL}
+          fetchUrlsList={this.fetchUrlsList.bind(this)}
+          leastMostShortened={(() => {
+              let least = this.state.mostShortened[this.state.mostShortened.length-1]
+              if (least) {
+                return least.requests
+              }
+              return 0
+            })()
+          }
         />
+
+          {/*
+          leastMostVisited={(() => {
+              let least = this.state.mostVisited[this.state.mostVisited.length-1]
+              if (least) {
+                return least.visits
+              }
+              return 0
+            })()
+          }
+        */}
 
         <div id="home-display-boxes">
 
@@ -52,14 +73,14 @@ export default class Home extends React.Component {
             className="most-visited-list"
             title="Most Visited Links"
             urlsList={this.state.mostVisited}
-            updateTopTrendingURLs={this.props.updateTopTrendingURLs}
           />
 
+          { /* will have to continuously check in for most visited
+          list updates */ }
           <URLsListBox
             className="most-shortened-list"
             title="Most Shortened"
             urlsList={this.state.mostShortened}
-            updateTopRequestedURLs={this.props.updateTopRequestedURLs}
           />
 
           <ChatBox

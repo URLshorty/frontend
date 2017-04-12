@@ -7,8 +7,6 @@ import rootReducer from './reducers/rootReducer'
 
 // create an object for the default state
 // this is where data is imported for initial state
-import trendingURLs from './data/trendingURLs'
-import requestedURLs from './data/requestedURLs'
 import chatMessages from './data/sampleChat'
 import user from './data/sampleUser'
 
@@ -18,7 +16,6 @@ const defaultState = {
     urls: [],
     submitNewEnabled: false, // USE COMPONENT STATE FOR EPHEMERAL STUFF LIKE THIS
   },
-  topTrendingURLs: trendingURLs,
   chatMessages,
   userData: {
     id: user.id,

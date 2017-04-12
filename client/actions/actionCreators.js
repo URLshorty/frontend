@@ -1,6 +1,5 @@
 // does not hot reload
 
-// could trigger a recheck on most shortened/visited urls lists
 export function inputURL(inputURL) {
   return {
     type: 'URL_INPUT',

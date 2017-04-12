@@ -22,6 +22,9 @@ export default class NewForm extends React.Component {
           shortened: json.newUserUrl.shortened,
           timesShortened: json.url.requests,
         })
+        if (this.props.leastMostShortened <= json.url.requests) {
+          this.props.fetchUrlsList('most-shortened')
+        }
       })
       .catch((er) => alert(er))
 
