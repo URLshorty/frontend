@@ -22,7 +22,6 @@ export default class Home extends React.Component {
         return response.json()
       }).then((json) => {
         if (setAddress === "most-shortened") {
-          console.log(this)
           this.setState({
             ...this.state,
             mostShortened: json,
@@ -56,8 +55,20 @@ export default class Home extends React.Component {
           }
         />
 
-          {/*
-          leastMostVisited={(() => {
+        <div id="home-display-boxes">
+
+          <URLsListBox
+            className="most-shortened-list"
+            title="Most Shortened"
+            urlsList={this.state.mostShortened}
+          />
+
+          <URLsListBox
+            className="most-visited-list"
+            title="Most Visited Links"
+            urlsList={this.state.mostVisited}
+            fetchUrlsList={this.fetchUrlsList.bind(this)}
+            leastMostVisited={(() => {
               let least = this.state.mostVisited[this.state.mostVisited.length-1]
               if (least) {
                 return least.visits
@@ -65,22 +76,6 @@ export default class Home extends React.Component {
               return 0
             })()
           }
-        */}
-
-        <div id="home-display-boxes">
-
-          <URLsListBox
-            className="most-visited-list"
-            title="Most Visited Links"
-            urlsList={this.state.mostVisited}
-          />
-
-          { /* will have to continuously check in for most visited
-          list updates */ }
-          <URLsListBox
-            className="most-shortened-list"
-            title="Most Shortened"
-            urlsList={this.state.mostShortened}
           />
 
           <ChatBox

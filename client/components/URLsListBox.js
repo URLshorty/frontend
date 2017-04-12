@@ -2,6 +2,22 @@ import React from 'react'
 
 export default class URLsListBox extends React.Component {
 
+  // poll if most visited box is mounted
+  // refactor with conditional or update to WebSockets
+  componentDidMount() {
+    if (this.props.className === 'most-visited-list') {
+      this.interval = setInterval(()=>{this.pollVisits()}, 2000)
+    }
+  }
+  componentWillUnmount() {
+    if (this.props.className === 'most-visited-list') {
+      clearInterval(this.interval)
+    }
+  }
+  pollVisits() {
+    this.props.fetchUrlsList('most-visited')
+  }
+
   renderRow(url, index) {
     let address = url.address
     if (address.slice(0,7) === "http://") {
