@@ -10,6 +10,7 @@ function inputURLs(state = {}, action) {
         urls: [{
             address: action.inputURL.address,
             shortened: action.inputURL.shortened,
+            timesShortened: action.inputURL.timesShortened,
           },
           ...state.urls],
         submitNewEnabled: state.submitNewEnabled,

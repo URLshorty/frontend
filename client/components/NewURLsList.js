@@ -10,6 +10,7 @@ export default class NewURLsList extends React.Component {
       <tr className="input-url-row" key={index}>
         <td><a href={shortUrl} target="_blank">{shortUrl}</a></td>
         <td>{inputURL.address}</td>
+        <td>{inputURL.timesShortened}</td>
       </tr>
     )
   }
@@ -23,6 +24,7 @@ export default class NewURLsList extends React.Component {
               <tr className="input-url-table-header">
                 <td className="header-cell">Short URL</td>
                 <td className="header-cell">Destination</td>
+                <td className="header-cell">Times Shortened</td>
               </tr>
 
                 {this.props.inputURLs.urls.map(this.renderInputURLs.bind(this))}

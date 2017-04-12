@@ -20,6 +20,7 @@ export default class NewForm extends React.Component {
         this.props.inputURL({
           address: inputURL,
           shortened: json.newUserUrl.shortened,
+          timesShortened: json.url.requests,
         })
       })
       .catch((er) => alert(er))
