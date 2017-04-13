@@ -6,8 +6,10 @@ import inputURLs from './inputURLs'
 import chatMessages from './chatMessages'
 import userData from './userData'
 import currentModal from './currentModal'
+import user from './user'
 
 const rootReducer = combineReducers({
+  user,
   inputURLs,
   chatMessages,
   userData,

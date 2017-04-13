@@ -24,6 +24,12 @@ const defaultState = {
     is_admin: user.is_admin,
     created_at: user.created_at,
   },
+  user: {
+    id: null,
+    username: null,
+    email: null,
+    is_admin: null,
+  },
   currentModal: null,
 }
 

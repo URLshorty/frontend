@@ -14,10 +14,18 @@ export function enableSubmitNewURL(bool) {
   }
 }
 
+// delete this and all the dummy user functions
 export function updateUserData(updateObj) {
   return {
     type: 'UPDATE_USER_DATA',
     updateObj,
+  }
+}
+
+export function setUser(user) {
+  return {
+    type: 'SET_USER',
+    user,
   }
 }
 

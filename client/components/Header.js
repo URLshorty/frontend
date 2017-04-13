@@ -9,24 +9,47 @@ export default class Header extends React.Component {
     this.props.setCurrentModal(modalName)
   }
 
+  logout() {
+    fetch(`${process.env.API_URL}/api/logout}`)
+
+    console.log('cookies: '+document.cookie)
+
+    this.props.setUser({
+      id: null,
+      username: null,
+      email: null,
+      is_admin: null,
+    })
+  }
+
   render() {
     return (
       <div id="header">
-        
+
         <div className="logo">
           <Link to="/"><span>URL</span>.shorty</Link>
         </div>
 
         <div id="nav-bar">
           <IndexLink to="/" className="nav-link" activeClassName="active">Home</IndexLink>
-          <NavLink onClick={this.showModal.bind(this, "loginModal")} className="nav-link" activeClassName="active">Login</NavLink>
-          <NavLink onClick={this.showModal.bind(this, "signUpModal")} className="nav-link" activeClassName="active">Sign Up</NavLink>
-          <NavLink to="/users/random-username" className="nav-link" activeClassName="active">Random User</NavLink>
-        </div>
 
-{/*        <div id="mobile-menu-button">
-          &#9776;
-        </div>*/}
+          { !this.props.user.id &&
+            <NavLink onClick={this.showModal.bind(this, "loginModal")} className="nav-link" activeClassName="active">Login</NavLink>
+          }
+
+          { !this.props.user.id &&
+            <NavLink onClick={this.showModal.bind(this, "signUpModal")} className="nav-link" activeClassName="active">Sign Up</NavLink>
+          }
+
+          { this.props.user.id &&
+            <NavLink to="/users/random-username" className="nav-link" activeClassName="active">{`${this.props.user.username}'s Profile`}</NavLink>
+          }
+
+          { this.props.user.id &&
+            <NavLink onClick={this.logout.bind(this)} className="nav-link" activeClassName="active">Logout</NavLink>
+          }
+
+        </div>
 
       </div>
     )
