@@ -11,17 +11,18 @@ export default class LoginModal extends React.Component {
 
   loginSubmit(e) {
     e.preventDefault()
-    fetch(`${process.env.API_URL}/api/login?username=${this.refs.username.value}&password=${this.refs.password.value}`, {method: 'POST'})
+    fetch(`${process.env.API_URL}/api/login?username=${this.refs.username.value}&password=${this.refs.password.value}`, {
+      method: 'POST',
+      credentials: 'include',
+      })
       .then((response) => {
+        console.log(response)
         return response.json()
       }).then((json) => {
         if (json.error) {
           console.log(json.error)
           this.setState({notification: "Ooops, something went wrong. Please try again."})
         } else {
-
-          console.log('cookies: '+document.cookie)
-
           this.props.setUser(json)
           this.props.setCurrentModal(null)
         }

@@ -10,10 +10,10 @@ export default class Header extends React.Component {
   }
 
   logout() {
-    fetch(`${process.env.API_URL}/api/logout}`)
-
-    console.log('cookies: '+document.cookie)
-
+    fetch(`${process.env.API_URL}/api/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      })
     this.props.setUser({
       id: null,
       username: null,
