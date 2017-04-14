@@ -16,11 +16,10 @@ export default class LoginModal extends React.Component {
       credentials: 'include',
       })
       .then((response) => {
-        console.log(response)
         return response.json()
       }).then((json) => {
         if (json.error) {
-          console.log(json.error)
+          console.log({loginError: json.error})
           this.setState({notification: "Ooops, something went wrong. Please try again."})
         } else {
           this.props.setUser(json)
@@ -28,7 +27,7 @@ export default class LoginModal extends React.Component {
         }
       })
       .catch((er) => {
-        console.log(er)
+        console.log({loginError: er})
         this.setState({notification: "Ooops, something went wrong. Please try again."})
       })
   }

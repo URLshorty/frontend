@@ -17,7 +17,6 @@ export default class Header extends React.Component {
     this.props.setUser({
       id: null,
       username: null,
-      email: null,
       is_admin: null,
     })
   }
@@ -42,7 +41,7 @@ export default class Header extends React.Component {
           }
 
           { this.props.user.id &&
-            <NavLink to="/users/random-username" className="nav-link" activeClassName="active">{`${this.props.user.username}'s Profile`}</NavLink>
+            <NavLink to={`/users/${this.props.user.id}`} className="nav-link" activeClassName="active">{`${this.props.user.username}'s Profile`}</NavLink>
           }
 
           { this.props.user.id &&

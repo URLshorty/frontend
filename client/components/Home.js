@@ -81,6 +81,7 @@ export default class Home extends React.Component {
           <ChatBox
             chatMessages={this.props.chatMessages}
             addMessageToChat={this.props.addMessageToChat}
+            user={this.props.user}
           />
 
         </div>

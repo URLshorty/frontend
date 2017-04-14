@@ -3,14 +3,41 @@ import React from 'react'
 export default class UserProfile extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       usernameUpdateField: false,
       emailUpdateField: false,
+      username: '',
+      email: '',
+      created_at: ' ', // mandatory space so not undefined
     }
   }
 
-  newUsernameSubmit(e) { // look at DRY here
+  componentWillMount() {
+    const path = this.props.location.pathname
+    // parens are regexp capture
+    const id = path.match(/users\/(\d+)/)[1]
+    fetch(`${process.env.API_URL}/api/users/${id}`)
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        // handle this second error at api
+        if (json.error || json.name === "error") {
+          console.log("Something went wrong")
+        } else {
+          this.setState({
+            ...this.state,
+            username: json.username,
+            email: json.email,
+            created_at: json.created_at,
+        })
+        }
+      })
+      .catch((er) => console.log(er))
+  }
+
+  newUsernameSubmit(e) { // DRY this
     e.preventDefault(e)
     this.props.updateUserData({
       newUsername: this.refs.username.value
@@ -37,10 +64,6 @@ export default class UserProfile extends React.Component {
       ...this.state,
       [field]: !this.state[field],
     })
-    if (this.state[field]) {
-      document.getElementById(field).focus(); // why doesn' this do anything, here or in the devtools console?
-      document.getElementById(field).select(); // ""
-    }
   }
 
   uploadModal() {
@@ -54,13 +77,13 @@ export default class UserProfile extends React.Component {
         <button onClick={this.uploadModal.bind(this)}>UPLOAD</button>
         <div id="user-data">
 
-          {/* possible refactor for DRY */}
+          {/* DRY this */}
           { !this.state.usernameUpdateField ? (
 
             <div>
               <div id="username">
                 <span>Username</span><br />
-                <span>{this.props.userData.username}</span>
+                <span>{this.state.username}</span>
               </div>
 
               <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>EDIT</button>
@@ -72,10 +95,11 @@ export default class UserProfile extends React.Component {
 
               <form id="update-username-form" onSubmit={this.newUsernameSubmit.bind(this)}>
                 <input
+                  autoFocus
                   id="usernameUpdateField"
                   type="text"
                   ref="username"
-                  placeholder={this.props.userData.username}
+                  placeholder={this.state.username}
                 />
               <input type="submit" hidden />
 
@@ -95,7 +119,7 @@ export default class UserProfile extends React.Component {
             <div>
               <div id="user-email">
                 <span>Email</span><br />
-                <span>{this.props.userData.email}</span>
+                <span>{this.state.email}</span>
               </div>
 
               <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>EDIT</button>
@@ -107,10 +131,11 @@ export default class UserProfile extends React.Component {
 
               <form id="update-email-form" onSubmit={this.newEmailSubmit.bind(this)}>
                 <input
+                  autoFocus
                   id="emailUpdateField"
                   type="text"
                   ref="email"
-                  placeholder={this.props.userData.email}
+                  placeholder={this.state.email}
                 />
                 <input type="submit" hidden />
 
@@ -127,7 +152,9 @@ export default class UserProfile extends React.Component {
 
           <div id="user-created-date">
             <span>User Since</span><br />
-            <span>{this.props.userData.created_at}</span>
+            <span>
+              {this.state.created_at.slice(0, this.state.created_at.indexOf('T'))}
+            </span>
           </div>
 
           <div id="most-popular-link">
@@ -138,6 +165,6 @@ export default class UserProfile extends React.Component {
 
         </div>
       </div>
-    );
+    )
   }
 }

@@ -1,10 +1,21 @@
-import React from 'react';
+import React from 'react'
 
-import Header from './Header';
-import ModalConductor from './ModalConductor';
-
+import Header from './Header'
+import ModalConductor from './ModalConductor'
 
 export default class Main extends React.Component {
+
+  componentWillMount() {
+    this.mapAuthTokenToState()
+  }
+
+  mapAuthTokenToState() {
+    if (document.cookie) {
+      const cookieString = document.cookie.slice(document.cookie.indexOf("{"))
+      const user = JSON.parse(cookieString)
+      this.props.setUser(user)
+    }
+  }
 
   render() {
     return (
@@ -27,10 +38,10 @@ export default class Main extends React.Component {
         <div id="footer">Thanks for visiting!</div>
 
       </div>
-    );
+    )
   }
 }
 
 Main.propTypes = {
   children: React.PropTypes.object.isRequired,
-};
+}
