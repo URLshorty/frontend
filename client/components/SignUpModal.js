@@ -20,31 +20,31 @@ export default class signUpModal extends React.Component {
 
             <form id="login-form" onSubmit={this.signUpSubmit.bind(this)}>
 
-              <input 
+              <input
                 id="usernameField"
-                type="text" 
-                ref="username" 
+                type="text"
+                ref="username"
                 placeholder="username"
               />
 
-              <input 
+              <input
                 id="email"
-                type="text" 
-                ref="email" 
+                type="text"
+                ref="email"
                 placeholder="email"
               />
 
-              <input 
+              <input
                 id="password"
-                type="password" 
-                ref="email" 
+                type="password"
+                ref="email"
                 placeholder="password"
               />
 
-              <input 
+              <input
                 id="confirm-password"
-                type="password" 
-                ref="confirm-password" 
+                type="password"
+                ref="confirm-password"
                 placeholder="confirm password"
               />
 
@@ -58,6 +58,6 @@ export default class signUpModal extends React.Component {
 
         </div>
       </div>
-    );
+    )
   }
 }

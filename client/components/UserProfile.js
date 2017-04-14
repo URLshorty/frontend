@@ -24,7 +24,10 @@ export default class UserProfile extends React.Component {
       .then((json) => {
         // handle this second error at api
         if (json.error || json.name === "error") {
-          console.log("Something went wrong")
+          this.props.setCurrentModal({
+            name: "messageModal",
+            message: "Sorry. Page not found.",
+          })
         } else {
           this.setState({
             ...this.state,
@@ -67,7 +70,7 @@ export default class UserProfile extends React.Component {
   }
 
   uploadModal() {
-    this.props.setCurrentModal("pictureUploadModal")
+    this.props.setCurrentModal({name: "pictureUploadModal"})
   }
 
   render() {

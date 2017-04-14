@@ -1,7 +1,7 @@
 function currentModal(state = {}, action) {
   switch (action.type) {
     case 'SET_MODAL':
-      return action.modal
+      return {...action.modalObj}
     default:
       return state
   }

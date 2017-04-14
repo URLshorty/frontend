@@ -33,11 +33,11 @@ export default class Header extends React.Component {
           <IndexLink to="/" className="nav-link" activeClassName="active">Home</IndexLink>
 
           { !this.props.user.id &&
-            <NavLink onClick={this.showModal.bind(this, "loginModal")} className="nav-link" activeClassName="active">Login</NavLink>
+            <NavLink onClick={this.showModal.bind(this, {name: "loginModal"})} className="nav-link" activeClassName="active">Login</NavLink>
           }
 
           { !this.props.user.id &&
-            <NavLink onClick={this.showModal.bind(this, "signUpModal")} className="nav-link" activeClassName="active">Sign Up</NavLink>
+            <NavLink onClick={this.showModal.bind(this, {name: "signUpModal"})} className="nav-link" activeClassName="active">Sign Up</NavLink>
           }
 
           { this.props.user.id &&
@@ -47,6 +47,8 @@ export default class Header extends React.Component {
           { this.props.user.id &&
             <NavLink onClick={this.logout.bind(this)} className="nav-link" activeClassName="active">Logout</NavLink>
           }
+
+           <NavLink onClick={this.showModal.bind(this, {name: "messageModal", message: "laksdhfklsadjfh"})} className="nav-link" activeClassName="active">test</NavLink>
 
         </div>
 

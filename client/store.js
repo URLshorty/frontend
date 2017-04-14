@@ -21,7 +21,10 @@ const defaultState = {
     username: null,
     is_admin: null,
   },
-  currentModal: null,
+  currentModal: {
+    name: null,
+    message: null,
+  },
 }
 
 // last arg enables Redux Devtools Chrome extension

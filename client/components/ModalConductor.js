@@ -3,12 +3,13 @@ import React from 'react'
 import LoginModal from './LoginModal.js'
 import SignUpModal from './SignUpModal.js'
 import PictureUploadModal from './PictureUploadModal.js'
+import MessageModal from './MessageModal.js'
 
 export default class ModalConductor extends React.Component {
 
   renderModal(modal) {
     // refactor this switch
-    switch (this.props.currentModal) {
+    switch (this.props.currentModal.name) {
       case 'loginModal':
         this.setCloseModal() // why doesn't this cause a memory leak
         // class set here on React DOM not responsive to its CSS, As a result modal-backdrop el is in LoginModal etc. (research)
@@ -26,6 +27,10 @@ export default class ModalConductor extends React.Component {
           user={this.props.user}
           setUser={this.props.setUser}
           setCurrentModal={this.props.setCurrentModal} />
+      case 'messageModal':
+        this.setCloseModal()
+        return <MessageModal
+          message={this.props.currentModal.message} />
       default:
         return null
     }

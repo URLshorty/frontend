@@ -29,10 +29,10 @@ export function setUser(user) {
   }
 }
 
-export function setCurrentModal(modal) {
+export function setCurrentModal(modalObj) {
   return {
     type: 'SET_MODAL',
-    modal,
+    modalObj,
   }
 }
 
