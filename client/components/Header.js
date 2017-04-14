@@ -48,8 +48,6 @@ export default class Header extends React.Component {
             <NavLink onClick={this.logout.bind(this)} className="nav-link" activeClassName="active">Logout</NavLink>
           }
 
-           <NavLink onClick={this.showModal.bind(this, {name: "messageModal", message: "laksdhfklsadjfh"})} className="nav-link" activeClassName="active">test</NavLink>
-
         </div>
 
       </div>

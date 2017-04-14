@@ -7,6 +7,7 @@ export default class UserProfile extends React.Component {
     this.state = {
       usernameUpdateField: false,
       emailUpdateField: false,
+      id: '',
       username: '',
       email: '',
       created_at: ' ', // mandatory space so not undefined
@@ -14,6 +15,10 @@ export default class UserProfile extends React.Component {
   }
 
   componentWillMount() {
+    this.retrieveData()
+  }
+
+  retrieveData() {
     const path = this.props.location.pathname
     // parens are regexp capture
     const id = path.match(/users\/(\d+)/)[1]
@@ -31,6 +36,7 @@ export default class UserProfile extends React.Component {
         } else {
           this.setState({
             ...this.state,
+            id: json.id,
             username: json.username,
             email: json.email,
             created_at: json.created_at,
@@ -89,7 +95,10 @@ export default class UserProfile extends React.Component {
                 <span>{this.state.username}</span>
               </div>
 
-              <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>EDIT</button>
+              { this.state.id === this.props.user.id &&
+                <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>EDIT</button>
+              }
+
             </div>
 
           ) : (
@@ -125,7 +134,9 @@ export default class UserProfile extends React.Component {
                 <span>{this.state.email}</span>
               </div>
 
-              <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>EDIT</button>
+              { this.state.id === this.props.user.id &&
+                <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>EDIT</button>
+              }
             </div>
 
           ) : (

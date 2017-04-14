@@ -3,7 +3,7 @@ import React from 'react'
 export default class MessageModal extends React.Component {
 
   render() {
-    let style = {'text-align': 'center'}
+    let style = {textAlign: 'center'}
     return (
       <div>
         <div className="modal-backdrop">
