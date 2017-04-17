@@ -5,9 +5,9 @@ export default class URLsListBox extends React.Component {
   // poll if most visited box is mounted
   // refactor with conditional or update to WebSockets
   componentDidMount() {
-    if (this.props.className === 'most-visited-list') {
-      this.interval = setInterval(()=>{this.pollVisits()}, 1000)
-    }
+    // if (this.props.className === 'most-visited-list') {
+    //   this.interval = setInterval(()=>{this.pollVisits()}, 1000)
+    // }
   }
   componentWillUnmount() {
     if (this.props.className === 'most-visited-list') {

@@ -11,7 +11,7 @@ export default class ModalConductor extends React.Component {
     // refactor this switch
     switch (this.props.currentModal.name) {
       case 'loginModal':
-        this.setCloseModal() // why doesn't this cause a memory leak
+        this.setCloseModal()
         // class set here on React DOM not responsive to its CSS, As a result modal-backdrop el is in LoginModal etc. (research)
         return <LoginModal className="modal-backdrop"
           user={this.props.user}

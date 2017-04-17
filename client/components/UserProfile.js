@@ -1,12 +1,12 @@
 import React from 'react'
 
+import SingleFieldForm from './SingleFieldForm.js'
+
 export default class UserProfile extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      usernameUpdateField: false,
-      emailUpdateField: false,
       id: '',
       username: '',
       email: '',
@@ -46,33 +46,83 @@ export default class UserProfile extends React.Component {
       .catch((er) => console.log(er))
   }
 
-  newUsernameSubmit(e) { // DRY this
-    e.preventDefault(e)
-    this.props.updateUserData({
-      newUsername: this.refs.username.value
-    })
-    this.setState({
-      ...this.state,
-      usernameUpdateField: false,
-    })
+  // executes in context (with props and state) of child
+  newUsernameSubmit(e) {
+    e.preventDefault()
+    let url = `${process.env.API_URL}/api/users/${this.props.currentUser.id}?username=${this.refs.username.value}`
+    fetch(url, {
+        method: 'PATCH', // must be caps
+        credentials: 'include',
+      })
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        // handle second error at api
+        if (json.error || json.name === "error") {
+          this.props.setCurrentModal({
+            name: "messageModal",
+            message: "Sorry. Something went wrong.",
+          })
+        } else {
+          // update user state in store
+          this.props.updateUserData({
+            newUsername: this.refs.username.value
+          })
+          // update user and field state on component
+          this.setState({
+            ...this.state,
+            value: this.refs.username.value,
+            usernameUpdateField: false,
+          })
+          this.toggleUpdateField()
+        }
+      })
+      .catch((er) => {
+        this.props.setCurrentModal({
+          name: "messageModal",
+          message: "" + er,
+        })
+      })
   }
 
   newEmailSubmit(e) {
-    e.preventDefault(e)
-    this.props.updateUserData({
-      newEmail: this.refs.email.value
-    })
-    this.setState({
-      ...this.state,
-      emailUpdateField: false,
-    })
-  }
-
-  enableInputFields(field) {
-    this.setState({
-      ...this.state,
-      [field]: !this.state[field],
-    })
+    e.preventDefault()
+    let url = `${process.env.API_URL}/api/users/${this.props.currentUser.id}?email=${this.refs.email.value}`
+    fetch(url, {
+        method: 'PATCH', // must be caps
+        credentials: 'include',
+      })
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        // handle second error at api
+        if (json.error || json.name === "error") {
+          this.props.setCurrentModal({
+            name: "messageModal",
+            message: "Sorry. Something went wrong.",
+          })
+        } else {
+          // update user state in store
+          this.props.updateUserData({
+            newEmail: this.refs.email.value
+          })
+          // update user and field state on component
+          this.setState({
+            ...this.state,
+            value: this.refs.email.value,
+            usernameUpdateField: false,
+          })
+          this.toggleUpdateField()
+        }
+      })
+      .catch((er) => {
+        this.props.setCurrentModal({
+          name: "messageModal",
+          message: "" + er,
+        })
+      })
   }
 
   uploadModal() {
@@ -86,83 +136,23 @@ export default class UserProfile extends React.Component {
         <button onClick={this.uploadModal.bind(this)}>UPLOAD</button>
         <div id="user-data">
 
-          {/* DRY this */}
-          { !this.state.usernameUpdateField ? (
+          <SingleFieldForm
+            name="username"
+            value={this.state.username}
+            profileId={this.state.id}
+            currentUser={this.props.user}
+            submit={this.newUsernameSubmit}
+            setCurrentModal={this.props.setCurrentModal}
+            updateUserData={this.props.updateUserData} />
 
-            <div>
-              <div id="username">
-                <span>Username</span><br />
-                <span>{this.state.username}</span>
-              </div>
-
-              { this.state.id === this.props.user.id &&
-                <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>EDIT</button>
-              }
-
-            </div>
-
-          ) : (
-
-            <div>
-
-              <form id="update-username-form" onSubmit={this.newUsernameSubmit.bind(this)}>
-                <input
-                  autoFocus
-                  id="usernameUpdateField"
-                  type="text"
-                  ref="username"
-                  placeholder={this.state.username}
-                />
-              <input type="submit" hidden />
-
-              </form>
-
-
-              <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>Cancel</button>
-              <button onClick={this.newUsernameSubmit.bind(this)}>Update</button>
-
-
-            </div>
-
-          )}
-
-          { !this.state.emailUpdateField ? (
-
-            <div>
-              <div id="user-email">
-                <span>Email</span><br />
-                <span>{this.state.email}</span>
-              </div>
-
-              { this.state.id === this.props.user.id &&
-                <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>EDIT</button>
-              }
-            </div>
-
-          ) : (
-
-            <div>
-
-              <form id="update-email-form" onSubmit={this.newEmailSubmit.bind(this)}>
-                <input
-                  autoFocus
-                  id="emailUpdateField"
-                  type="text"
-                  ref="email"
-                  placeholder={this.state.email}
-                />
-                <input type="submit" hidden />
-
-
-              </form>
-
-
-              <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>Cancel</button>
-              <button onClick={this.newEmailSubmit.bind(this)}>Update</button>
-
-            </div>
-
-          )}
+        <SingleFieldForm
+            name="email"
+            value={this.state.email}
+            profileId={this.state.id}
+            currentUser={this.props.user}
+            submit={this.newEmailSubmit}
+            setCurrentModal={this.props.setCurrentModal}
+            updateUserData={this.props.updateUserData} />
 
           <div id="user-created-date">
             <span>User Since</span><br />
