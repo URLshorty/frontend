@@ -46,19 +46,19 @@ export default class LoginModal extends React.Component {
             <form id="login-form" onSubmit={this.loginSubmit.bind(this)}>
 
               <input
+                required
                 id="usernameField"
                 type="text"
                 ref="username"
                 placeholder="username"
-                required
               />
 
               <input
+                required
                 id="password"
                 type="password"
                 ref="password"
                 placeholder="password"
-                required
               />
 
               <input type="submit" />
