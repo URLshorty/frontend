@@ -24,7 +24,7 @@ export default class Routes extends React.Component {
         <Router history={history}>
           <Route path="/" component={ReduxConnection}>
             <IndexRoute component={Home} />
-            <Route path="/users/:username" component={UserProfile} />
+            <Route path="/users/:id" component={UserProfile} />
           </Route>
         </Router>
       </Provider>

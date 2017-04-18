@@ -16,15 +16,19 @@ export default class UserProfile extends React.Component {
     }
   }
 
-  componentWillMount() {
-    this.retrieveData()
+  componentDidMount() {
+    console.log("in did mount")
+    this.retrieveData(this.props.params.id)
   }
 
-  retrieveData() {
-    const path = this.props.location.pathname
-    // parens are regexp capture
-    const id = path.match(/users\/(\d+)/)[1]
-    fetch(`${process.env.API_URL}/api/users/${id}`)
+  componentWillReceiveProps(nextProps) {
+    if ( this.props.params.id != nextProps.params.id ) {
+      this.retrieveData(nextProps.params.id)
+    }
+  }
+
+  retrieveData(idParam) {
+    fetch(`${process.env.API_URL}/api/users/${idParam}`)
       .then((response) => {
         return response.json()
       })
@@ -44,7 +48,8 @@ export default class UserProfile extends React.Component {
             created_at: json.created_at,
             mostPopularLong: json.mostPopularLong,
             mostPopularShort: json.mostPopularShort,
-        })
+          })
+    console.log("in retreive data.")
         }
       })
       .catch((er) => console.log(er))
@@ -108,10 +113,7 @@ export default class UserProfile extends React.Component {
             message: "Sorry. Something went wrong.",
           })
         } else {
-          // update user state in store
-          this.props.updateUserData({
-            newEmail: this.refs.email.value
-          })
+          // no email on user state in store
           // update user and field state on component
           this.setState({
             ...this.state,
@@ -165,15 +167,19 @@ export default class UserProfile extends React.Component {
             </span>
           </div>
 
-          <div id="most-popular-link">
-            <span>most popular link</span><br />
-            <span><a
-              href={`${process.env.API_URL}/${this.state.mostPopularShort}`}
-              target="_bland" >
-              {`${process.env.API_URL}/${this.state.mostPopularShort}`.slice(7)}
-              </a></span><br />
-            <span>{this.state.mostPopularLong}</span>
-          </div>
+          { this.state.mostPopularShort &&
+
+            <div id="most-popular-link">
+              <span>most popular link</span><br />
+              <span><a
+                href={`${process.env.API_URL}/${this.state.mostPopularShort}`}
+                target="_bland" >
+                {`${process.env.API_URL}/${this.state.mostPopularShort}`.slice(7)}
+                </a></span><br />
+              <span>{this.state.mostPopularLong}</span>
+            </div>
+
+          }
 
         </div>
       </div>
