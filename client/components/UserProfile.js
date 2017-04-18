@@ -17,7 +17,6 @@ export default class UserProfile extends React.Component {
   }
 
   componentDidMount() {
-    console.log("in did mount")
     this.retrieveData(this.props.params.id)
   }
 
