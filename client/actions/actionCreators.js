@@ -14,6 +14,7 @@ export function enableSubmitNewURL(bool) {
   }
 }
 
+// delete this and all the dummy user functions
 export function updateUserData(updateObj) {
   return {
     type: 'UPDATE_USER_DATA',
@@ -21,10 +22,17 @@ export function updateUserData(updateObj) {
   }
 }
 
-export function setCurrentModal(modal) {
+export function setUser(user) {
+  return {
+    type: 'SET_USER',
+    user,
+  }
+}
+
+export function setCurrentModal(modalObj) {
   return {
     type: 'SET_MODAL',
-    modal,
+    modalObj,
   }
 }
 

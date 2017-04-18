@@ -18,6 +18,11 @@
     transition-duration 0.3s
     transition-property all
     transition-timing-function ease
+  button:disabled
+  button:disabled:hover
+    color logoLightBlue
+    background-color rgba(0,0,0,0)
+    opacity 0.5
 
 #user-pic
   margin 0 auto
@@ -36,8 +41,9 @@
   padding 2rem 5rem
   box-shadow lightGreyShadow
   #username
-  #user-email
+  #email
   #user-created-date
+    margin-bottom .5rem
     :first-child
       font-family lobster
       font-size 1.5rem
@@ -52,16 +58,21 @@
       font-size 2rem
       color logoLightBlue
       margin-top 1.3rem
+      margin-bottom .4rem
       padding-left 1rem
   button
     display inline-block
-    margin .5rem
+    margin-bottom .9rem
+    margin-right .3rem
+    margin-left .3rem
   #most-popular-link
+  #most-popular-link a
     margin-top 1.5rem
     font-family slimBlocky
     font-size 1.3rem
     color navBarNavy
-    :first-child
+    text-decoration none
+    span:first-child
       font-family logoBlocky
       color logoLightBlue
 

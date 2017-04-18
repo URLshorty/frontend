@@ -8,7 +8,6 @@ import rootReducer from './reducers/rootReducer'
 // create an object for the default state
 // this is where data is imported for initial state
 import chatMessages from './data/sampleChat'
-import user from './data/sampleUser'
 
 // any changes here need to be added in ./ReduxConnection.js too
 const defaultState = {
@@ -17,14 +16,15 @@ const defaultState = {
     submitNewEnabled: false, // USE COMPONENT STATE FOR EPHEMERAL STUFF LIKE THIS
   },
   chatMessages,
-  userData: {
-    id: user.id,
-    username: user.username,
-    email: user.email,
-    is_admin: user.is_admin,
-    created_at: user.created_at,
+  user: {
+    id: null,
+    username: null,
+    is_admin: null,
   },
-  currentModal: null,
+  currentModal: {
+    name: null,
+    message: null,
+  },
 }
 
 // last arg enables Redux Devtools Chrome extension

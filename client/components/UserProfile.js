@@ -1,50 +1,138 @@
 import React from 'react'
 
+import SingleFieldForm from './SingleFieldForm.js'
+
 export default class UserProfile extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      usernameUpdateField: false,
-      emailUpdateField: false,
+      id: '',
+      username: '',
+      email: '',
+      created_at: ' ', // mandatory space so not undefined
+      mostPopularLong: '',
+      mostPopularShort: '',
     }
   }
 
-  newUsernameSubmit(e) { // look at DRY here
-    e.preventDefault(e)
-    this.props.updateUserData({
-      newUsername: this.refs.username.value
-    })
-    this.setState({
-      ...this.state,
-      usernameUpdateField: false,
-    })
+  componentDidMount() {
+    console.log("in did mount")
+    this.retrieveData(this.props.params.id)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if ( this.props.params.id != nextProps.params.id ) {
+      this.retrieveData(nextProps.params.id)
+    }
+  }
+
+  retrieveData(idParam) {
+    fetch(`${process.env.API_URL}/api/users/${idParam}`)
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        // handle this second error at api
+        if (json.error || json.name === "error") {
+          this.props.setCurrentModal({
+            name: "messageModal",
+            message: "Sorry. Page not found.",
+          })
+        } else {
+          this.setState({
+            ...this.state,
+            id: json.id,
+            username: json.username,
+            email: json.email,
+            created_at: json.created_at,
+            mostPopularLong: json.mostPopularLong,
+            mostPopularShort: json.mostPopularShort,
+          })
+    console.log("in retreive data.")
+        }
+      })
+      .catch((er) => console.log(er))
+  }
+
+  // executes in context (with props and state) of child
+  newUsernameSubmit(e) {
+    e.preventDefault()
+    let url = `${process.env.API_URL}/api/users/${this.props.currentUser.id}?username=${this.refs.username.value}`
+    fetch(url, {
+        method: 'PATCH', // must be caps
+        credentials: 'include',
+      })
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        // handle second error at api
+        if (json.error || json.name === "error") {
+          this.props.setCurrentModal({
+            name: "messageModal",
+            message: "Sorry. Something went wrong.",
+          })
+        } else {
+          // update user state in store
+          this.props.updateUserData({
+            newUsername: this.refs.username.value
+          })
+          // update user and field state on component
+          this.setState({
+            ...this.state,
+            value: this.refs.username.value,
+            usernameUpdateField: false,
+          })
+          this.toggleUpdateField()
+        }
+      })
+      .catch((er) => {
+        this.props.setCurrentModal({
+          name: "messageModal",
+          message: "" + er,
+        })
+      })
   }
 
   newEmailSubmit(e) {
-    e.preventDefault(e)
-    this.props.updateUserData({
-      newEmail: this.refs.email.value
-    })
-    this.setState({
-      ...this.state,
-      emailUpdateField: false,
-    })
-  }
-
-  enableInputFields(field) {
-    this.setState({
-      ...this.state,
-      [field]: !this.state[field],
-    })
-    if (this.state[field]) {
-      document.getElementById(field).focus(); // why doesn' this do anything, here or in the devtools console?
-      document.getElementById(field).select(); // ""
-    }
+    e.preventDefault()
+    let url = `${process.env.API_URL}/api/users/${this.props.currentUser.id}?email=${this.refs.email.value}`
+    fetch(url, {
+        method: 'PATCH', // must be caps
+        credentials: 'include',
+      })
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        // handle second error at api
+        if (json.error || json.name === "error") {
+          this.props.setCurrentModal({
+            name: "messageModal",
+            message: "Sorry. Something went wrong.",
+          })
+        } else {
+          // no email on user state in store
+          // update user and field state on component
+          this.setState({
+            ...this.state,
+            value: this.refs.email.value,
+            usernameUpdateField: false,
+          })
+          this.toggleUpdateField()
+        }
+      })
+      .catch((er) => {
+        this.props.setCurrentModal({
+          name: "messageModal",
+          message: "" + er,
+        })
+      })
   }
 
   uploadModal() {
-    this.props.setCurrentModal("pictureUploadModal")
+    this.props.setCurrentModal({name: "pictureUploadModal"})
   }
 
   render() {
@@ -54,90 +142,47 @@ export default class UserProfile extends React.Component {
         <button onClick={this.uploadModal.bind(this)}>UPLOAD</button>
         <div id="user-data">
 
-          {/* possible refactor for DRY */}
-          { !this.state.usernameUpdateField ? (
+          <SingleFieldForm
+            name="username"
+            value={this.state.username}
+            profileId={this.state.id}
+            currentUser={this.props.user}
+            submit={this.newUsernameSubmit}
+            setCurrentModal={this.props.setCurrentModal}
+            updateUserData={this.props.updateUserData} />
 
-            <div>
-              <div id="username">
-                <span>Username</span><br />
-                <span>{this.props.userData.username}</span>
-              </div>
-
-              <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>EDIT</button>
-            </div>
-
-          ) : (
-
-            <div>
-
-              <form id="update-username-form" onSubmit={this.newUsernameSubmit.bind(this)}>
-                <input
-                  id="usernameUpdateField"
-                  type="text"
-                  ref="username"
-                  placeholder={this.props.userData.username}
-                />
-              <input type="submit" hidden />
-
-              </form>
-
-
-              <button onClick={this.enableInputFields.bind(this, "usernameUpdateField")}>Cancel</button>
-              <button onClick={this.newUsernameSubmit.bind(this)}>Update</button>
-
-
-            </div>
-
-          )}
-
-          { !this.state.emailUpdateField ? (
-
-            <div>
-              <div id="user-email">
-                <span>Email</span><br />
-                <span>{this.props.userData.email}</span>
-              </div>
-
-              <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>EDIT</button>
-            </div>
-
-          ) : (
-
-            <div>
-
-              <form id="update-email-form" onSubmit={this.newEmailSubmit.bind(this)}>
-                <input
-                  id="emailUpdateField"
-                  type="text"
-                  ref="email"
-                  placeholder={this.props.userData.email}
-                />
-                <input type="submit" hidden />
-
-
-              </form>
-
-
-              <button onClick={this.enableInputFields.bind(this, "emailUpdateField")}>Cancel</button>
-              <button onClick={this.newEmailSubmit.bind(this)}>Update</button>
-
-            </div>
-
-          )}
+        <SingleFieldForm
+            name="email"
+            value={this.state.email}
+            profileId={this.state.id}
+            currentUser={this.props.user}
+            submit={this.newEmailSubmit}
+            setCurrentModal={this.props.setCurrentModal}
+            updateUserData={this.props.updateUserData} />
 
           <div id="user-created-date">
             <span>User Since</span><br />
-            <span>{this.props.userData.created_at}</span>
+            <span>
+              {this.state.created_at.slice(0, this.state.created_at.indexOf('T'))}
+            </span>
           </div>
 
-          <div id="most-popular-link">
-            <span>most popular link</span><br />
-            <span>www.g.com</span><br />
-            <span>www.google.com</span>
-          </div>
+          { this.state.mostPopularShort &&
+
+            <div id="most-popular-link">
+              <span>most popular link</span><br />
+              <span><a
+                href={`${process.env.API_URL}/${this.state.mostPopularShort}`}
+                target="_bland" >
+                {`${process.env.API_URL}/${this.state.mostPopularShort}`.slice(7)}
+                </a></span><br />
+              <span>{this.state.mostPopularLong}</span>
+            </div>
+
+          }
 
         </div>
       </div>
-    );
+    )
   }
 }

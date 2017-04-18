@@ -12,23 +12,50 @@ export default class NewForm extends React.Component {
 
       fetch(`${process.env.API_URL}/api/urls?address=${inputURL}`, {
         method: 'POST',
+        credentials: 'include',
       })
       .then((response) => {
         return response.json()
       })
       .then((json) => {
-        this.props.inputURL({
-          address: inputURL,
-          shortened: json.newUserUrl.shortened,
-          timesShortened: json.url.requests,
-        })
-        if (this.props.leastMostShortened <= json.url.requests) {
-          this.props.fetchUrlsList('most-shortened')
+        if ( json.error ) {
+          this.props.setCurrentModal({
+            name: 'messageModal',
+            message: json.error,
+          })
+          this.logout()
+        } else {
+          this.props.inputURL({
+            address: inputURL,
+            shortened: json.newUserUrl.shortened,
+            timesShortened: json.url.requests,
+          })
+          if (this.props.leastMostShortened <= json.url.requests) {
+            this.props.fetchUrlsList('most-shortened')
+          }
         }
       })
-      .catch((er) => alert(er))
+      .catch((er) => {
+          this.props.setCurrentModal({
+            name: 'messageModal',
+            message: "" + er,
+          })
+      })
 
     }
+  }
+
+  // Header uses this too, put it in the store
+  logout() {
+    fetch(`${process.env.API_URL}/api/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      })
+    this.props.setUser({
+      id: null,
+      username: null,
+      is_admin: null,
+    })
   }
 
   checkSubmitEnabled() {

@@ -6,7 +6,7 @@ export default class URLsListBox extends React.Component {
   // refactor with conditional or update to WebSockets
   componentDidMount() {
     if (this.props.className === 'most-visited-list') {
-      this.interval = setInterval(()=>{this.pollVisits()}, 2000)
+      this.interval = setInterval(()=>{this.pollVisits()}, 1000)
     }
   }
   componentWillUnmount() {
@@ -23,10 +23,23 @@ export default class URLsListBox extends React.Component {
     if (address.slice(0,7) === "http://") {
       address = address.slice(7)
     }
+    if (address.slice(0,8) === "https://") {
+      address = address.slice(8)
+    }
+    // here long-form addresses will be visited directly
+    // refactor this method out of JSX
     return (
       <tr key={index}>
         <td className="trending-url-count-cell">{url.requests || url.visits}</td>
-        <td className="trending-url-cell"><a href={"http://" + address} target="_blank">{address}</a></td>
+        <td className="trending-url-cell">
+          <a
+            href={"http://" + address}
+            target="_blank"
+            onClick={() => {
+                fetch(`${process.env.API_URL}/api/increment?address=${url.address}`, {method: 'post'})
+              }
+            }
+          >{address}</a></td>
       </tr>
     )
   }

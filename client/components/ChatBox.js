@@ -39,7 +39,11 @@ export default class ChatBox extends React.Component {
       <div className={`chat-box ${this.masking()}`}>
         <div id={this.masking()}>
           <div id="user-icon" />
-          <h4>Please sign in to use chat.</h4>
+          { this.props.user.id ? (
+            <h4>Live chat feature coming soon!</h4>
+          ) : (
+            <h4>Please sign in to use chat.</h4>
+          )}
         </div>
 
         <div id="chat-window">{this.props.chatMessages.map((x, i) => <p key={i} >{x}</p> )}</div>

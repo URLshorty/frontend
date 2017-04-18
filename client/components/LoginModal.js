@@ -2,12 +2,34 @@ import React from 'react'
 
 export default class LoginModal extends React.Component {
 
-  // add notification here to alert when this
-  // appears as a result of session expiration
+  constructor(props) {
+    super(props)
+    this.state = {
+      notification: ""
+    }
+  }
 
   loginSubmit(e) {
     e.preventDefault()
-    console.log(this.refs.username.value)
+    fetch(`${process.env.API_URL}/api/login?username=${this.refs.username.value}&password=${this.refs.password.value}`, {
+      method: 'POST',
+      credentials: 'include',
+      })
+      .then((response) => {
+        return response.json()
+      }).then((json) => {
+        if (json.error) {
+          console.log({loginError: json.error})
+          this.setState({notification: "Ooops, something went wrong. Please try again."})
+        } else {
+          this.props.setUser(json)
+          this.props.setCurrentModal(null)
+        }
+      })
+      .catch((er) => {
+        console.log({loginError: er})
+        this.setState({notification: "Ooops, something went wrong. Please try again."})
+      })
   }
 
   render() {
@@ -24,6 +46,7 @@ export default class LoginModal extends React.Component {
             <form id="login-form" onSubmit={this.loginSubmit.bind(this)}>
 
               <input
+                required
                 id="usernameField"
                 type="text"
                 ref="username"
@@ -31,15 +54,18 @@ export default class LoginModal extends React.Component {
               />
 
               <input
+                required
                 id="password"
                 type="password"
-                ref="email"
+                ref="password"
                 placeholder="password"
               />
 
               <input type="submit" />
 
             </form>
+
+            <div className="modal-notification">{this.state.notification}</div>
 
           </div>
 
