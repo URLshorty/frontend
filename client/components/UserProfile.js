@@ -11,6 +11,8 @@ export default class UserProfile extends React.Component {
       username: '',
       email: '',
       created_at: ' ', // mandatory space so not undefined
+      mostPopularLong: '',
+      mostPopularShort: '',
     }
   }
 
@@ -40,6 +42,8 @@ export default class UserProfile extends React.Component {
             username: json.username,
             email: json.email,
             created_at: json.created_at,
+            mostPopularLong: json.mostPopularLong,
+            mostPopularShort: json.mostPopularShort,
         })
         }
       })
@@ -163,8 +167,12 @@ export default class UserProfile extends React.Component {
 
           <div id="most-popular-link">
             <span>most popular link</span><br />
-            <span>www.g.com</span><br />
-            <span>www.google.com</span>
+            <span><a
+              href={`${process.env.API_URL}/${this.state.mostPopularShort}`}
+              target="_bland" >
+              {`${process.env.API_URL}/${this.state.mostPopularShort}`.slice(7)}
+              </a></span><br />
+            <span>{this.state.mostPopularLong}</span>
           </div>
 
         </div>
