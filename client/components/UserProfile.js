@@ -48,7 +48,6 @@ export default class UserProfile extends React.Component {
             mostPopularLong: json.mostPopularLong,
             mostPopularShort: json.mostPopularShort,
           })
-    console.log("in retreive data.")
         }
       })
       .catch((er) => console.log(er))
