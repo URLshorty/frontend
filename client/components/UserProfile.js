@@ -10,6 +10,7 @@ export default class UserProfile extends React.Component {
       id: '',
       username: '',
       email: '',
+      picture_id: '',
       created_at: ' ', // mandatory space so not undefined
       mostPopularLong: '',
       mostPopularShort: '',
@@ -21,7 +22,8 @@ export default class UserProfile extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ( this.props.params.id != nextProps.params.id ) {
+    if ( this.props.params.id != nextProps.params.id ||
+         this.props.hook != nextProps.hook ) {
       this.retrieveData(nextProps.params.id)
     }
   }
@@ -40,13 +42,13 @@ export default class UserProfile extends React.Component {
           })
         } else {
           this.setState({
-            ...this.state,
             id: json.id,
             username: json.username,
             email: json.email,
             created_at: json.created_at,
             mostPopularLong: json.mostPopularLong,
             mostPopularShort: json.mostPopularShort,
+            picture_id: json.picture_id,
           })
         }
       })
@@ -111,7 +113,7 @@ export default class UserProfile extends React.Component {
             message: "Sorry. Something went wrong.",
           })
         } else {
-          // no email on user state in store
+          // (no email on user state in store)
           // update user and field state on component
           this.setState({
             ...this.state,
@@ -136,8 +138,25 @@ export default class UserProfile extends React.Component {
   render() {
     return (
       <div id="user-profile">
-        <div id="user-pic"></div>
-        <button onClick={this.uploadModal.bind(this)}>UPLOAD</button>
+
+        { this.state.picture_id ? (
+          <div>
+            <img
+              id="profile-picture"
+              src={`${process.env.API_URL}/uploads/${this.state.picture_id}`} />
+            { this.props.user.id == this.props.params.id &&
+              <button onClick={this.uploadModal.bind(this)}>CHANGE</button>
+            }
+          </div>
+        ) : (
+          <div>
+            <div className="user-icon user-icon-white" />
+            { this.props.user.id == this.props.params.id &&
+              <button onClick={this.uploadModal.bind(this)}>UPLOAD</button>
+            }
+          </div>
+        )}
+
         <div id="user-data">
 
           <SingleFieldForm
@@ -148,6 +167,8 @@ export default class UserProfile extends React.Component {
             submit={this.newUsernameSubmit}
             setCurrentModal={this.props.setCurrentModal}
             updateUserData={this.props.updateUserData} />
+
+        {/* update parent state method needs to be passed down to update props */}
 
         <SingleFieldForm
             name="email"

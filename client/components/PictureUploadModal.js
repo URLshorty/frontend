@@ -27,7 +27,7 @@ export default class PictureUploadModal extends React.Component {
   uploadPhoto(photo) {
     let fd = new FormData()
     fd.append('file', photo)
-    fetch(`${process.env.API_URL}/api/users/${this.props.user.id}`, {
+    fetch(`${process.env.API_URL}/api/users/${this.props.profileNumber}`, {
         method: 'PATCH', // must be caps
         credentials: 'include',
         body: fd,
@@ -36,9 +36,14 @@ export default class PictureUploadModal extends React.Component {
         return response.json()
       })
       .then((json) => {
-        console.log(JSON.stringify(json))
+        this.props.toggleHook()
       })
-      .catch((er) => console.log(er))
+      .catch((er) => {
+        this.props.setCurrentModal({
+          name: "messageModal",
+          message: "Sorry about that. Something went wrong.",
+        })
+      })
   }
 
   render() {
