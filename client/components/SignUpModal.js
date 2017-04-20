@@ -14,17 +14,17 @@ export default class signUpModal extends React.Component {
     if (this.verifyInputs()) return
 
     fetch(`${process.env.API_URL}/api/users`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username: this.refs.username.value,
-        password: this.refs.password.value,
-        email: this.refs.email.value,
-        is_admin: 0,
-      }),
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: this.refs.username.value,
+          password: this.refs.password.value,
+          email: this.refs.email.value,
+          is_admin: 0,
+        }),
       })
       .then((response) => {
         return response.json()

@@ -38,7 +38,7 @@ export default class ChatBox extends React.Component {
     return (
       <div className={`chat-box ${this.masking()}`}>
         <div id={this.masking()}>
-          <div id="user-icon" />
+          <div className="user-icon" />
           { this.props.user.id ? (
             <h4>Live chat feature coming soon!</h4>
           ) : (

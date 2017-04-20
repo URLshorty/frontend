@@ -42,3 +42,9 @@ export function addMessageToChat(message) {
     message,
   }
 }
+
+export function toggleHook() {
+  return {
+    type: 'TOGGLE_HOOK',
+  }
+}

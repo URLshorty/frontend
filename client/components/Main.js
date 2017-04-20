@@ -24,8 +24,12 @@ export default class Main extends React.Component {
         <ModalConductor
           currentModal={this.props.currentModal}
           setCurrentModal={this.props.setCurrentModal}
-          user={this.props.user}
-          setUser={this.props.setUser} />
+          currentUser={this.props.user}
+          setUser={this.props.setUser}
+          toggleHook={this.props.toggleHook}
+          profileNumber={
+            (this.props.params && this.props.params.id) ? this.props.params.id : null
+          } />
 
         <Header
           setCurrentModal={this.props.setCurrentModal}

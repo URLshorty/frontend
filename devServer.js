@@ -6,6 +6,9 @@ const config = require('./webpack.config.dev')
 const app = express()
 const compiler = webpack(config)
 
+const favicon = require('serve-favicon')
+app.use(favicon(path.join(__dirname, 'client', 'data', 'favicon.ico')))
+
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath,

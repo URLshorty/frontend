@@ -13,6 +13,7 @@ function mapStateToProps(state) {
     userData: state.userData,
     user: state.user,
     currentModal: state.currentModal,
+    hook: state.hook,
   }
 }
 

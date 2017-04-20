@@ -20,11 +20,13 @@ const defaultState = {
     id: null,
     username: null,
     is_admin: null,
+    picture_id: null,
   },
   currentModal: {
     name: null,
     message: null,
   },
+  hook: false, // a toggle that can be hooked to for triggering rerender from a disparate component (PictureUploadModal rerenders UserProfile)
 }
 
 // last arg enables Redux Devtools Chrome extension
