@@ -75,11 +75,7 @@ export default class UserProfile extends React.Component {
       .then((json) => {
         // handle second error at api
         if ( json.error === "Session expired." ) {
-          this.props.setUser({
-            id: null,
-            username: null,
-            is_admin: null,
-          })
+          this.props.clearUser()
           this.props.setCurrentModal({
             name: "messageModal",
             message: "Ooops. Looks like your session expired. Please login again.",
@@ -100,7 +96,6 @@ export default class UserProfile extends React.Component {
             value: this.refs.username.value,
             usernameUpdateField: false,
           })
-          this.toggleUpdateField()
         }
       })
       .catch((er) => {
@@ -124,11 +119,7 @@ export default class UserProfile extends React.Component {
       .then((json) => {
         // handle second error at api
         if ( json.error === "Session expired." ) {
-          this.props.setUser({
-            id: null,
-            username: null,
-            is_admin: null,
-          })
+          this.props.clearUser()
           this.props.setCurrentModal({
             name: "messageModal",
             message: "Ooops. Looks like your session expired. Please login again.",
@@ -146,7 +137,6 @@ export default class UserProfile extends React.Component {
             value: this.refs.email.value,
             usernameUpdateField: false,
           })
-          this.toggleUpdateField()
         }
       })
       .catch((er) => {
@@ -195,7 +185,7 @@ export default class UserProfile extends React.Component {
                 profileId={this.state.id}
                 currentUser={this.props.user}
                 submit={this.newUsernameSubmit}
-                setUser={this.props.setUser}
+                clearUser={this.props.clearUser}
                 setCurrentModal={this.props.setCurrentModal}
                 updateUserData={this.props.updateUserData} />
 
@@ -205,7 +195,7 @@ export default class UserProfile extends React.Component {
                   profileId={this.state.id}
                   currentUser={this.props.user}
                   submit={this.newEmailSubmit}
-                  setUser={this.props.setUser}
+                  clearUser={this.props.clearUser}
                   setCurrentModal={this.props.setCurrentModal}
                   updateUserData={this.props.updateUserData} />
 

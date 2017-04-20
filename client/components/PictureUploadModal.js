@@ -38,11 +38,7 @@ export default class PictureUploadModal extends React.Component {
       .then((json) => {
         if ( json.error && json.error === "No user logged in." ||
              json.error && json.error === "Session expired." ) {
-          this.props.setUser({
-            id: null,
-            username: null,
-            is_admin: null,
-          })
+          this.props.clearUser()
           this.props.setCurrentModal({
             name: "messageModal",
             message: "Ooops. Looks like your session may have timed out. Please log in again",
@@ -51,6 +47,7 @@ export default class PictureUploadModal extends React.Component {
         this.props.toggleHook()
       })
       .catch((er) => {
+        console.log(er)
         this.props.setCurrentModal({
           name: "messageModal",
           message: "Sorry about that. Something went wrong.",

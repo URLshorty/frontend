@@ -29,6 +29,13 @@ export function setUser(user) {
   }
 }
 
+export function clearUser(user) {
+  return {
+    type: 'CLEAR_USER',
+    user,
+  }
+}
+
 export function setCurrentModal(modalObj) {
   return {
     type: 'SET_MODAL',

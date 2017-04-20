@@ -26,6 +26,7 @@ export default class Main extends React.Component {
           setCurrentModal={this.props.setCurrentModal}
           currentUser={this.props.user}
           setUser={this.props.setUser}
+          clearUser={this.props.clearUser}
           toggleHook={this.props.toggleHook}
           profileNumber={
             (this.props.params && this.props.params.id) ? this.props.params.id : null

@@ -19,7 +19,7 @@ export default class ModalConductor extends React.Component {
       case 'pictureUploadModal':
         this.setCloseModal()
         return <PictureUploadModal
-          setUser={this.props.setUser}
+          clearUser={this.props.clearUser}
           setCurrentModal={this.props.setCurrentModal}
           profileNumber={this.props.profileNumber}
           toggleHook={this.props.toggleHook} />

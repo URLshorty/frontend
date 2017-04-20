@@ -9,6 +9,13 @@ function user(state={}, action) {
       }
     case 'SET_USER':
       return ({...action.user})
+    case 'CLEAR_USER':
+      return ({
+        id: null,
+        username: null,
+        is_admin: null,
+        picture_id: null,
+      })
     default:
       return state;
   }
