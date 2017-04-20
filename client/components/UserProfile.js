@@ -74,7 +74,17 @@ export default class UserProfile extends React.Component {
       })
       .then((json) => {
         // handle second error at api
-        if (json.error || json.name === "error") {
+        if ( json.error === "Session expired." ) {
+          this.props.setUser({
+            id: null,
+            username: null,
+            is_admin: null,
+          })
+          this.props.setCurrentModal({
+            name: "messageModal",
+            message: "Ooops. Looks like your session expired. Please login again.",
+          })
+        } else if (json.error || json.name === "error") {
           this.props.setCurrentModal({
             name: "messageModal",
             message: "Sorry. Something went wrong.",
@@ -113,7 +123,17 @@ export default class UserProfile extends React.Component {
       })
       .then((json) => {
         // handle second error at api
-        if (json.error || json.name === "error") {
+        if ( json.error === "Session expired." ) {
+          this.props.setUser({
+            id: null,
+            username: null,
+            is_admin: null,
+          })
+          this.props.setCurrentModal({
+            name: "messageModal",
+            message: "Ooops. Looks like your session expired. Please login again.",
+          })
+        } else if (json.error || json.name === "error") {
           this.props.setCurrentModal({
             name: "messageModal",
             message: "Sorry. Something went wrong.",
@@ -175,6 +195,7 @@ export default class UserProfile extends React.Component {
                 profileId={this.state.id}
                 currentUser={this.props.user}
                 submit={this.newUsernameSubmit}
+                setUser={this.props.setUser}
                 setCurrentModal={this.props.setCurrentModal}
                 updateUserData={this.props.updateUserData} />
 
@@ -184,6 +205,7 @@ export default class UserProfile extends React.Component {
                   profileId={this.state.id}
                   currentUser={this.props.user}
                   submit={this.newEmailSubmit}
+                  setUser={this.props.setUser}
                   setCurrentModal={this.props.setCurrentModal}
                   updateUserData={this.props.updateUserData} />
 
