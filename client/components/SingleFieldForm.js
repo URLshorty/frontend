@@ -111,7 +111,6 @@ export default class SingleFieldForm extends React.Component {
               Update
             </button>
 
-
           </div>
 
         )}

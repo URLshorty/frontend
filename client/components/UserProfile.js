@@ -1,6 +1,7 @@
 import React from 'react'
 
 import SingleFieldForm from './SingleFieldForm.js'
+import Loader from 'halogen/PulseLoader'
 
 export default class UserProfile extends React.Component {
 
@@ -94,7 +95,7 @@ export default class UserProfile extends React.Component {
           this.setState({
             ...this.state,
             value: this.refs.username.value,
-            usernameUpdateField: false,
+            updateEnabled: false,
           })
         }
       })
@@ -135,7 +136,7 @@ export default class UserProfile extends React.Component {
           this.setState({
             ...this.state,
             value: this.refs.email.value,
-            usernameUpdateField: false,
+            updateEnabled: false,
           })
         }
       })
@@ -154,6 +155,12 @@ export default class UserProfile extends React.Component {
   render() {
     return (
       <div id="user-profile">
+
+        { this.state.isFetching &&
+
+          <Loader color="#fff" size="26px" margin="4px"/>
+
+        }
 
         { !this.state.isFetching &&
 
