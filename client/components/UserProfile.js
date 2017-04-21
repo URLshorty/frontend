@@ -1,7 +1,7 @@
 import React from 'react'
 
 import SingleFieldForm from './SingleFieldForm.js'
-import Loader from 'halogen/PulseLoader'
+import MDSpinner from "react-md-spinner"
 
 export default class UserProfile extends React.Component {
 
@@ -158,7 +158,7 @@ export default class UserProfile extends React.Component {
 
         { this.state.isFetching &&
 
-          <Loader color="#fff" size="26px" margin="4px"/>
+          <MDSpinner />
 
         }
 
