@@ -1,4 +1,5 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 
 import SingleFieldForm from './SingleFieldForm.js'
 import MDSpinner from "react-md-spinner"
@@ -44,8 +45,9 @@ export default class UserProfile extends React.Component {
         if (json.error || json.name === "error") {
           this.props.setCurrentModal({
             name: "messageModal",
-            message: "Sorry. Page not found.",
+            message: "Sorry. Don't seem to know that user.",
           })
+          browserHistory.push('/')
         } else {
           this.setState({
             id: json.id,

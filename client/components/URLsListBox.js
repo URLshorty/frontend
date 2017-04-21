@@ -1,9 +1,10 @@
 import React from 'react'
 
+import MDSpinner from "react-md-spinner"
+
 export default class URLsListBox extends React.Component {
 
   // poll if most visited box is mounted
-  // refactor with conditional or update to WebSockets
   componentDidMount() {
     if (this.props.className === 'most-visited-list') {
       this.interval = setInterval(()=>{this.pollVisits()}, 1000)
@@ -51,6 +52,11 @@ export default class URLsListBox extends React.Component {
         <h1>{this.props.title}</h1>
         <table>
           <tbody>
+
+            { this.props.urlsList.length === 0 &&
+              <MDSpinner style={{"top":"4rem"}}/>
+            }
+
             { this.props.urlsList.map(this.renderRow) }
           </tbody>
         </table>
