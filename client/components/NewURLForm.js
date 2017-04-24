@@ -45,17 +45,13 @@ export default class NewForm extends React.Component {
     }
   }
 
-  // Header uses this too, put it in the store
+  // Header uses this too, DRY out
   logout() {
     fetch(`${process.env.API_URL}/api/logout`, {
         method: 'POST',
         credentials: 'include',
       })
-    this.props.setUser({
-      id: null,
-      username: null,
-      is_admin: null,
-    })
+    this.props.clearUser()
   }
 
   checkSubmitEnabled() {

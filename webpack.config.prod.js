@@ -4,7 +4,6 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'source-map',
   entry: [
-
     './client/rootMount'
   ],
   output: {
@@ -17,7 +16,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': "'production'",
-        'API_URL': "'http://localhost:3000/'"
+        'API_URL': "'https://url-shorty-api.herokuapp.com'"
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -40,10 +39,10 @@ module.exports = {
       include: path.join(__dirname, 'client'),
       loader: 'style-loader!css-loader!stylus-loader'
     },
-        // imgs
+    // imgs
     {
-    test: /\.(jpg|png)$/,
-    loader: 'file-loader',
+      test: /\.(jpg|png)$/,
+      loader: 'file-loader',
       // options: {
       //   name: '[path][name].[hash].[ext]',
     },

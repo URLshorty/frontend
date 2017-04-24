@@ -35,6 +35,7 @@ export default class Main extends React.Component {
         <Header
           setCurrentModal={this.props.setCurrentModal}
           user={this.props.user}
+          clearUser={this.props.clearUser}
           setUser={this.props.setUser} />
 
         {/* because just this.props.childen doesn't get you access to the children's props  */}

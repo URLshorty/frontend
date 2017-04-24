@@ -9,17 +9,12 @@ export default class Header extends React.Component {
     this.props.setCurrentModal(modalName)
   }
 
-  // NewURLForm uses this too, put it in the store
   logout() {
     fetch(`${process.env.API_URL}/api/logout`, {
         method: 'POST',
         credentials: 'include',
       })
-    this.props.setUser({
-      id: null,
-      username: null,
-      is_admin: null,
-    })
+    this.props.clearUser()
   }
 
   render() {

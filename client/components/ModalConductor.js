@@ -15,6 +15,7 @@ export default class ModalConductor extends React.Component {
         // class set here on React DOM not responsive to its CSS, As a result modal-backdrop el is in LoginModal etc. (research)
         return <LoginModal className="modal-backdrop"
           setUser={this.props.setUser}
+          clearUser={this.props.clearUser}
           setCurrentModal={this.props.setCurrentModal} />
       case 'pictureUploadModal':
         this.setCloseModal()

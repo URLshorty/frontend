@@ -4,6 +4,8 @@ import MDSpinner from "react-md-spinner"
 
 export default class URLsListBox extends React.Component {
 
+  // put a poll limit on here
+
   // poll if most visited box is mounted
   componentDidMount() {
     if (this.props.className === 'most-visited-list') {

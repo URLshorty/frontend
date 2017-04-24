@@ -160,7 +160,7 @@ export default class UserProfile extends React.Component {
 
         { this.state.isFetching &&
 
-          <MDSpinner />
+          <MDSpinner style={{"top":"4rem"}} />
 
         }
 
@@ -222,7 +222,7 @@ export default class UserProfile extends React.Component {
                   <span><a
                     href={`${process.env.API_URL}/${this.state.mostPopularShort}`}
                     target="_bland" >
-                    {`${process.env.API_URL}/${this.state.mostPopularShort}`.slice(7)}
+                    {`${process.env.API_URL}/${this.state.mostPopularShort}`.slice(8)}
                     </a></span><br />
                   <span>{this.state.mostPopularLong}</span>
                 </div>

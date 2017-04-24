@@ -35,7 +35,8 @@ const defaultState = {
 // CAUTION: right now actions in redux devtools queue may be replayed on hot reload
 
 // IMPORTANT!! WHEN APP IS HOSTED DEVTOOL MUST NOT BE INCLUDED
-const store = createStore(rootReducer, defaultState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+// const store = createStore(rootReducer, defaultState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(rootReducer, defaultState)
 
 
 export const history = syncHistoryWithStore(browserHistory, store)
