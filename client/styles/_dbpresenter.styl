@@ -1,0 +1,58 @@
+@import '_colorsfontsstyles.styl'
+
+.db-page
+  text-align center
+  .tabs
+    font-family logoBlocky
+    margin-bottom 1rem
+    button
+      background lightGrey
+      border 1px solid rgba(42, 79, 110, .2)
+      color navBarNavy
+      padding .5rem 1rem
+    button:first-child
+      border-radius 10% 0 0 10%
+      padding-left 1rem
+    button:last-child
+      border-radius 0 10% 10% 0
+      padding-right 1rem
+    button:focus
+      outline 0
+    button:hover
+      cursor pointer
+    .tab-active
+      background logoBeige
+      color logoLightBlue
+  .tables
+    max-width 98%
+    max-height 35rem
+    overflow-x auto
+    overflow-y auto
+    display inline-block
+    margin auto
+  table
+    font-size 1rem
+    background lightGrey
+    border greyBorder
+    color navBarNavy
+    thead
+      background navBarNavy
+      color lightGrey
+      th
+        padding .2rem 1rem
+        text-align center
+    tbody
+      td
+        overflow-wrap break-word
+        border-bottom 1px solid rgba(42, 79, 110, .2)
+        border-right 1px solid rgba(42, 79, 110, .2)
+        text-align left
+        padding .2rem .5rem
+  .note
+    max-width 85%
+    margin 1rem auto
+    color navBarNavy
+    padding 1rem
+    background lightGrey
+    border greyBorder
+

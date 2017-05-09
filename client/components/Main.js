@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router'
 
 import Header from './Header'
 import ModalConductor from './ModalConductor'
@@ -40,7 +41,7 @@ export default class Main extends React.Component {
         {/* because just this.props.childen doesn't get you access to the children's props  */}
         {React.cloneElement(this.props.children, this.props)}
 
-        <div id="footer">Thanks for visiting!</div>
+        <div id="footer"><Link to="/db">Thanks for visiting!</Link></div>
 
       </div>
     )

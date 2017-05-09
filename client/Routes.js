@@ -12,6 +12,7 @@ import store, { history } from './store'
 import ReduxConnection from './ReduxConnection'
 import Home from './components/Home'
 import UserProfile from './components/UserProfile'
+import DbPresenter from './components/DbPresenter'
 
 export default class Routes extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ export default class Routes extends React.Component {
           <Route path="/" component={ReduxConnection}>
             <IndexRoute component={Home} />
             <Route path="/users/:id" component={UserProfile} />
+            <Route path="/db" component={DbPresenter} />
           </Route>
         </Router>
       </Provider>
