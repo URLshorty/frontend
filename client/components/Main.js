@@ -10,9 +10,8 @@ export default class Main extends React.Component {
   }
 
   mapAuthTokenToState() {
-    if (document.cookie) {
-      const cookieString = document.cookie.slice(document.cookie.indexOf("{"))
-      const user = JSON.parse(cookieString)
+    if (localStorage.authToken) {
+      const user = JSON.parse(localStorage.authToken)
       this.props.setUser(user)
     }
   }

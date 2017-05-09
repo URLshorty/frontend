@@ -133,7 +133,8 @@ export default class UserProfile extends React.Component {
             message: "Sorry. Something went wrong.",
           })
         } else {
-          // (no email on user state in store)
+          // (no email on user state in store, so no update
+          // there is necessary/no reducer)
           // update user and field state on component
           this.setState({
             ...this.state,
