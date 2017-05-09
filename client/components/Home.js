@@ -46,7 +46,7 @@ export default class Home extends React.Component {
           enableSubmitNewURL={this.props.enableSubmitNewURL}
           fetchUrlsList={this.fetchUrlsList.bind(this)}
           setCurrentModal={this.props.setCurrentModal}
-          setUser={this.props.setUser}
+          clearUser={this.props.clearUser}
           leastMostShortened={(() => {
               let least = this.state.mostShortened[this.state.mostShortened.length-1]
               if (least) {
