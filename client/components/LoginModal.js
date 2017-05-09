@@ -22,9 +22,8 @@ export default class LoginModal extends React.Component {
           console.log({loginError: json.error})
           this.setState({notification: "Ooops, something went wrong. Please try again."})
         } else {
-          console.log(JSON.stringify(json))
           this.props.setUser(json)
-          this.props.clearUser()
+          this.props.setCurrentModal(null)
         }
       })
       .catch((er) => {

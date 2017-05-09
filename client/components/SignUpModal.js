@@ -36,9 +36,10 @@ export default class signUpModal extends React.Component {
             this.setState({notification: "Ooops, something went wrong. Please try again."})
           }
         } else {
-          this.props.setUser(json)
-          this.login(json.username, this.refs.password.value)
-          this.props.setCurrentModal(null)
+          this.login({
+            ...json,
+            password: this.refs.password.value,
+          })
         }
       })
       .catch((er) => {
@@ -47,16 +48,21 @@ export default class signUpModal extends React.Component {
       })
   }
 
-  login(username, password) {
-    // consider handling login together with signup
-    // at API or refactor
-    fetch(`${process.env.API_URL}/api/login?username=${username}&password=${password}`, {
+  login(user) {
+    fetch(`${process.env.API_URL}/api/login?username=${user.username}&password=${user.password}`, {
       method: 'POST',
       credentials: 'include',
     })
+    .then(response => {
+      return response.json()
+    })
+    .then(json => {
+      this.props.setUser(json)
+      this.props.setCurrentModal(null)
+    })
     .catch(e => {
       this.setState({
-        notification: "Ooops, something went wrong. Please try again."
+        notification: "Ooops, something went wrong. Please try logging in as this use."
       })
     })
   }
