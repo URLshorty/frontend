@@ -17,7 +17,7 @@ export default class Home extends React.Component {
   }
 
   fetchUrlsList(setAddress) {
-    fetch(`${process.env.API_URL}/api/${setAddress}`)
+    fetch(`${process.env.API_URL}/api/${setAddress}?limit=10`)
       .then((response) => {
         return response.json()
       }).then((json) => {
