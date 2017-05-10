@@ -83,12 +83,26 @@
   width 100%
   height 3rem
   background-color navBarNavy
-  // box-shadow lightGreyShadow
-  a
+  .thank-you
     color white
     text-align center
     font-family lobster
     font-size 1.2rem
     text-decoration none
+  .thank-you::before
+  .thank-you::after
+    content "|"
+    margin 1rem
+    color logoBeige
+    font-family arial
+  .repo-link
+    text-decoration none
+    color logoBeige
+  @media (max-width: 25rem)
+    .thank-you::before
+    .thank-you::after
+    .repo-link
+      display none
+
 
 

@@ -38,10 +38,31 @@ export default class Main extends React.Component {
           clearUser={this.props.clearUser}
           setUser={this.props.setUser} />
 
+
         {/* because just this.props.childen doesn't get you access to the children's props  */}
         {React.cloneElement(this.props.children, this.props)}
 
-        <div id="footer"><Link to="/db">Thanks for visiting!</Link></div>
+
+        <div id="footer">
+
+          <a
+            href="https://github.com/URLshorty/api"
+            className="repo-link"
+            target="_blank"
+          >
+            API Repo
+          </a>
+
+          <Link to="/db" className="thank-you">Thanks for visiting!</Link>
+
+          <a href="https://github.com/URLshorty/frontend"
+             className="repo-link"
+             target="_blank"
+          >
+            SPA Repo
+          </a>
+
+        </div>
 
       </div>
     )
