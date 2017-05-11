@@ -46,7 +46,7 @@ export default class Main extends React.Component {
         <div id="footer">
 
           <a
-            href="https://github.com/URLshorty/api"
+            href="https://github.com/URLshorty/urlshorty-api"
             className="repo-link"
             target="_blank"
           >
@@ -55,7 +55,7 @@ export default class Main extends React.Component {
 
           <Link to="/db" className="thank-you">Thanks for visiting!</Link>
 
-          <a href="https://github.com/URLshorty/frontend"
+          <a href="https://github.com/URLshorty/urlshorty-spa"
              className="repo-link"
              target="_blank"
           >
