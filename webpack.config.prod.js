@@ -16,7 +16,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': "'production'",
-        'API_URL': "'https://url-shorty-api.herokuapp.com'"
+        'API_URL': "'https://url5.herokuapp.com'"
       }
     }),
     new webpack.optimize.UglifyJsPlugin({

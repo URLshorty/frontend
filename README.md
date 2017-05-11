@@ -16,9 +16,9 @@ Welcome to the **URLshorty SPA**. This single-page React+Redux application is de
 
 ## API
 
-Repository: <https://github.com/URLshorty/api>
+Repository: <https://github.com/URLshorty/urlshorty-api>
 
-Live: <https://url-shorty-api.herokuapp.com>
+Live: <https://url5.herokuapp.com/>
 
 ## Stack
 

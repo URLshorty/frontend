@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/URLshorty/frontend.git"
+    "url": "https://github.com/URLshorty/urlshorty-spa"
   },
   "author": "Russell Tepper",
   "license": "MIT",
