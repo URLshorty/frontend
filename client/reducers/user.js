@@ -35,6 +35,7 @@ function user(state={}, action) {
   }
 }
 
+// move to Main.js
 function updateLocalStorageUser(userData) {
   const tokenString = JSON.stringify(userData)
   localStorage.authToken = tokenString
